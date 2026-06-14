@@ -1,2029 +1,1525 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>이도현 도수치료 | Premium Rehabilitation Center</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-:root {
-  --navy: #0a1628;
-  --navy-mid: #152544;
-  --navy-light: #1e3a6e;
-  --gold: #c9a84c;
-  --gold-light: #e8c97a;
-  --white: #ffffff;
-  --off-white: #f8f7f4;
-  --gray-light: #f0eff0;
-  --gray: #9aa0aa;
-  --gray-dark: #4a5568;
-  --text: #1a202c;
-  --shadow: 0 20px 60px rgba(10,22,40,0.12);
-  --shadow-sm: 0 4px 20px rgba(10,22,40,0.08);
-  --radius: 16px;
-  --transition: cubic-bezier(0.4, 0, 0.2, 1);
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이시헌 강사 - AI 디지털 콘텐츠 교육</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --naver: #03C75A;
+      --naver-dark: #02a849;
+      --naver-light: #e8faf1;
+      --navy: #1E2D40;
+      --navy-mid: #2e4057;
+      --gray: #6b7684;
+      --gray-light: #f5f6f8;
+      --border: #e8eaed;
+      --white: #ffffff;
+    }
 
-html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
 
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  color: var(--text);
-  background: var(--white);
-  overflow-x: hidden;
-}
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      line-height: 1.6;
+    }
 
-/* ===== SCROLLBAR ===== */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--off-white); }
-::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 3px; }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-/* ===== NAVIGATION ===== */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(10,22,40,0.08);
-  transition: all 0.3s var(--transition);
-}
-nav.scrolled {
-  background: rgba(255,255,255,0.98);
-  box-shadow: 0 2px 30px rgba(10,22,40,0.1);
-}
-.nav-inner {
-  max-width: 1200px; margin: 0 auto;
-  padding: 0 24px;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 72px;
-}
-.nav-logo {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 20px; font-weight: 600;
-  color: var(--navy);
-  letter-spacing: -0.5px;
-  text-decoration: none;
-}
-.nav-logo span { color: var(--gold); }
-.nav-links {
-  display: flex; gap: 36px; list-style: none;
-}
-.nav-links a {
-  font-size: 14px; font-weight: 500;
-  color: var(--navy); text-decoration: none;
-  letter-spacing: 0.3px;
-  transition: color 0.2s;
-  position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
-  height: 2px; background: var(--gold);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.3s var(--transition);
-}
-.nav-links a:hover { color: var(--gold); }
-.nav-links a:hover::after { transform: scaleX(1); }
-.nav-cta {
-  background: var(--navy); color: var(--white) !important;
-  padding: 10px 24px; border-radius: 50px;
-  font-size: 13px !important; font-weight: 500 !important;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.2s !important;
-  white-space: nowrap;
-}
-.nav-cta:hover { background: var(--navy-light) !important; transform: translateY(-1px); }
-.nav-cta::after { display: none !important; }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--naver); }
 
-.hamburger {
-  display: none; flex-direction: column; gap: 5px;
-  cursor: pointer; padding: 8px;
-}
-.hamburger span {
-  width: 24px; height: 2px;
-  background: var(--navy); border-radius: 2px;
-  transition: all 0.3s;
-}
-.mobile-menu {
-  display: none; position: fixed; top: 72px; left: 0; right: 0;
-  background: white; z-index: 999;
-  padding: 24px; border-bottom: 1px solid var(--gray-light);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-.mobile-menu.open { display: block; }
-.mobile-menu ul { list-style: none; }
-.mobile-menu li { padding: 14px 0; border-bottom: 1px solid var(--gray-light); }
-.mobile-menu a { color: var(--navy); text-decoration: none; font-size: 16px; font-weight: 500; }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--naver); }
 
-/* ===== SECTIONS COMMON ===== */
-section { padding: 100px 24px; }
-.container { max-width: 1200px; margin: 0 auto; }
-.section-label {
-  display: inline-block;
-  font-size: 12px; font-weight: 600; letter-spacing: 3px;
-  color: var(--gold); text-transform: uppercase;
-  margin-bottom: 16px;
-}
-.section-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 600; color: var(--navy);
-  line-height: 1.3; letter-spacing: -1px;
-  margin-bottom: 20px;
-}
-.section-sub {
-  font-size: 16px; color: var(--gray-dark);
-  line-height: 1.8; max-width: 560px;
-}
-.divider {
-  width: 48px; height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
-  border-radius: 2px; margin: 20px 0 40px;
-}
+    .nav-cta {
+      background: var(--naver);
+      color: var(--white) !important;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--naver-dark) !important; color: var(--white) !important; }
 
-/* ===== HERO ===== */
-#hero {
-  min-height: 100vh; padding: 0;
-  background: var(--navy);
-  display: flex; align-items: center;
-  position: relative; overflow: hidden;
-}
-.hero-bg {
-  position: absolute; inset: 0;
-  background: 
-    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(30,58,110,0.8) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(201,168,76,0.15) 0%, transparent 50%),
-    linear-gradient(135deg, #0a1628 0%, #152544 50%, #0f2040 100%);
-}
-.hero-pattern {
-  position: absolute; inset: 0; opacity: 0.03;
-  background-image: repeating-linear-gradient(
-    0deg, transparent, transparent 60px,
-    rgba(255,255,255,0.5) 60px, rgba(255,255,255,0.5) 61px
-  ),
-  repeating-linear-gradient(
-    90deg, transparent, transparent 60px,
-    rgba(255,255,255,0.5) 60px, rgba(255,255,255,0.5) 61px
-  );
-}
-.hero-inner {
-  max-width: 1200px; margin: 0 auto;
-  padding: 120px 24px 80px;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 60px; align-items: center;
-  width: 100%; position: relative; z-index: 1;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(201,168,76,0.15);
-  border: 1px solid rgba(201,168,76,0.3);
-  padding: 8px 18px; border-radius: 50px;
-  color: var(--gold); font-size: 13px; font-weight: 500;
-  letter-spacing: 1px; margin-bottom: 28px;
-}
-.hero-badge::before {
-  content: ''; width: 6px; height: 6px;
-  background: var(--gold); border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
-}
-.hero-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: clamp(32px, 5vw, 58px);
-  font-weight: 700; color: var(--white);
-  line-height: 1.25; letter-spacing: -2px;
-  margin-bottom: 24px;
-}
-.hero-title em {
-  font-style: normal; color: var(--gold);
-  position: relative; display: inline-block;
-}
-.hero-title em::after {
-  content: ''; position: absolute; bottom: 2px; left: 0; right: 0;
-  height: 3px; background: rgba(201,168,76,0.4); border-radius: 2px;
-}
-.hero-desc {
-  font-size: 17px; color: rgba(255,255,255,0.65);
-  line-height: 1.9; margin-bottom: 44px;
-  font-weight: 300;
-}
-.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--gold);
-  color: var(--navy); font-size: 15px; font-weight: 700;
-  padding: 16px 36px; border-radius: 50px;
-  text-decoration: none; border: none; cursor: pointer;
-  transition: all 0.3s var(--transition);
-  display: inline-flex; align-items: center; gap: 8px;
-  box-shadow: 0 8px 30px rgba(201,168,76,0.4);
-  font-family: 'Noto Sans KR', sans-serif;
-}
-.btn-primary:hover {
-  background: var(--gold-light);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(201,168,76,0.5);
-}
-.btn-kakao {
-  background: #FEE500;
-  color: #191919; font-size: 15px; font-weight: 700;
-  padding: 16px 36px; border-radius: 50px;
-  text-decoration: none; border: none; cursor: pointer;
-  transition: all 0.3s var(--transition);
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-.btn-kakao:hover { background: #fada00; transform: translateY(-2px); }
-.btn-outline {
-  background: transparent;
-  color: var(--white); font-size: 15px; font-weight: 500;
-  padding: 16px 36px; border-radius: 50px;
-  text-decoration: none; border: 1.5px solid rgba(255,255,255,0.3); cursor: pointer;
-  transition: all 0.3s var(--transition);
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    /* ── ADMIN BTN ── */
+    .nav-admin-btn {
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      color: var(--gray);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      list-style: none;
+    }
+    .nav-admin-btn:hover { border-color: var(--naver); color: var(--naver); background: var(--naver-light); }
 
-.hero-stats {
-  display: flex; gap: 40px; margin-top: 52px;
-  padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);
-}
-.stat { text-align: center; }
-.stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 36px; font-weight: 700; color: var(--gold);
-  display: block; line-height: 1;
-}
-.stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 6px; letter-spacing: 0.5px; }
+    /* ── ADMIN OVERLAY ── */
+    .admin-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30,45,64,0.45);
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 72px 16px 16px;
+    }
+    .admin-overlay.open { display: flex; }
 
-.hero-image {
-  position: relative; border-radius: 24px;
-  overflow: hidden; aspect-ratio: 4/5;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
-}
-.hero-img-placeholder {
-  width: 100%; height: 100%;
-  background: linear-gradient(160deg, #1e3a6e 0%, #152544 40%, #0a1628 100%);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-  cursor: pointer;
-}
-.hero-img-placeholder.has-image img {
-  width: 100%; height: 100%; object-fit: cover;
-}
-.hero-img-placeholder .upload-hint {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 12px; color: rgba(255,255,255,0.4);
-  font-size: 14px; text-align: center;
-  background: rgba(10,22,40,0.7);
-  opacity: 0; transition: opacity 0.3s;
-}
-.hero-img-placeholder:hover .upload-hint { opacity: 1; }
-.hero-img-icon {
-  width: 80px; height: 80px;
-  background: rgba(201,168,76,0.15);
-  border: 2px solid rgba(201,168,76,0.3);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px;
-}
-.hero-img-icon svg { width: 36px; height: 36px; fill: var(--gold); }
-.hero-img-placeholder p { color: rgba(255,255,255,0.5); font-size: 14px; text-align: center; }
+    .admin-panel {
+      width: 420px;
+      max-width: 100%;
+      max-height: calc(100vh - 88px);
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 24px 64px rgba(30,45,64,0.18);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideDown 0.25s ease;
+    }
+    @keyframes slideDown {
+      from { opacity:0; transform: translateY(-12px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
 
-.hero-card {
-  position: absolute; bottom: 24px; left: 24px; right: 24px;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 16px; padding: 18px 20px;
-  display: flex; align-items: center; gap: 14px;
-}
-.hero-card-icon {
-  width: 44px; height: 44px; flex-shrink: 0;
-  background: var(--gold); border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-}
-.hero-card-text h4 { font-size: 14px; font-weight: 600; color: white; }
-.hero-card-text p { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--gray-light);
+    }
+    .admin-header-left { display: flex; align-items: center; gap: 12px; }
+    .admin-logo { font-size: 24px; }
+    .admin-title { font-size: 16px; font-weight: 900; color: var(--navy); }
+    .admin-subtitle { font-size: 12px; color: var(--gray); margin-top: 1px; }
+    .admin-close {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: var(--border);
+      color: var(--gray);
+      cursor: pointer;
+      font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+    .admin-close:hover { background: #fde8e8; color: #d94f4f; }
 
-.scroll-indicator {
-  position: absolute; bottom: 40px; left: 50%;
-  transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  color: rgba(255,255,255,0.4); font-size: 12px; letter-spacing: 2px;
-  animation: bounce 2s infinite;
-}
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
-}
-.scroll-indicator::after {
-  content: ''; width: 1px; height: 40px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
-}
+    .admin-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .admin-body::-webkit-scrollbar { width: 6px; }
+    .admin-body::-webkit-scrollbar-track { background: transparent; }
+    .admin-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
-/* ===== ABOUT ===== */
-#about { background: var(--off-white); }
-.about-grid {
-  display: grid; grid-template-columns: 1fr 1.2fr;
-  gap: 80px; align-items: center;
-}
-.about-image-wrap { position: relative; }
-.about-img {
-  width: 100%; aspect-ratio: 3/4; border-radius: 20px;
-  overflow: hidden; position: relative;
-  box-shadow: var(--shadow);
-  cursor: pointer;
-}
-.about-img-placeholder {
-  width: 100%; height: 100%;
-  background: linear-gradient(145deg, #e8edf5 0%, #d0daea 100%);
-  display: flex; align-items: center; justify-content: center;
-}
-.about-img-placeholder.has-image img { width: 100%; height: 100%; object-fit: cover; }
-.about-img .upload-hint {
-  position: absolute; inset: 0;
-  background: rgba(10,22,40,0.6);
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 8px;
-  color: white; font-size: 14px;
-  opacity: 0; transition: opacity 0.3s;
-}
-.about-img:hover .upload-hint { opacity: 1; }
+    .admin-section {
+      border: 1px solid #e8eaed;
+      border-radius: 12px;
+      background: #ffffff;
+      margin-bottom: 0;
+    }
+    .admin-section-title {
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      color: #2e4057 !important;
+      padding: 10px 16px !important;
+      background: #f5f6f8 !important;
+      border-bottom: 1px solid #e8eaed !important;
+      border-radius: 12px 12px 0 0 !important;
+      letter-spacing: 0.3px !important;
+      display: block !important;
+      margin: 0 !important;
+    }
+    .admin-field {
+      padding: 12px 16px !important;
+      border-bottom: 1px solid #e8eaed !important;
+      background: #ffffff !important;
+      display: block !important;
+    }
+    .admin-field:last-child { border-bottom: none !important; border-radius: 0 0 12px 12px !important; }
+    .admin-field > label {
+      display: block !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      color: #6b7684 !important;
+      margin-bottom: 6px !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      line-height: 1.4 !important;
+    }
+    .admin-field > input[type="text"],
+    .admin-field > input[type="email"],
+    .admin-field > textarea {
+      display: block !important;
+      width: 100% !important;
+      padding: 8px 10px !important;
+      border: 1.5px solid #e8eaed !important;
+      border-radius: 7px !important;
+      font-size: 13px !important;
+      font-family: 'Noto Sans KR', sans-serif !important;
+      color: #1E2D40 !important;
+      background: #ffffff !important;
+      outline: none !important;
+      box-sizing: border-box !important;
+      resize: vertical !important;
+      line-height: 1.5 !important;
+      -webkit-appearance: none !important;
+    }
+    .admin-field > input[type="text"]:focus,
+    .admin-field > input[type="email"]:focus,
+    .admin-field > textarea:focus {
+      border-color: #03C75A !important;
+      box-shadow: 0 0 0 3px rgba(3,199,90,0.1) !important;
+    }
+    .admin-field-row {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      background: #ffffff !important;
+      border-radius: 0 0 12px 12px !important;
+    }
+    .admin-field-row .admin-field {
+      border-right: 1px solid #e8eaed !important;
+      border-bottom: none !important;
+      border-radius: 0 !important;
+    }
+    .admin-field-row .admin-field:last-child { border-right: none !important; }
 
-.about-deco {
-  position: absolute; top: -20px; left: -20px;
-  width: 120px; height: 120px;
-  border: 3px solid var(--gold); border-radius: 20px;
-  opacity: 0.4;
-}
-.about-badge {
-  position: absolute; bottom: 30px; right: -20px;
-  background: white; border-radius: 16px;
-  padding: 16px 20px; box-shadow: var(--shadow);
-  text-align: center;
-}
-.about-badge .num {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px; font-weight: 700; color: var(--navy);
-}
-.about-badge .txt { font-size: 11px; color: var(--gray); margin-top: 2px; }
+    /* Photo area */
+    .admin-photo-area { padding: 16px; display: flex; gap: 14px; align-items: center; }
+    .admin-photo-preview-wrap {
+      width: 90px; height: 90px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--gray-light);
+    }
+    .admin-photo-empty {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 4px;
+      font-size: 11px; color: var(--gray);
+    }
+    .admin-photo-actions { display: flex; flex-direction: column; gap: 8px; }
+    .admin-upload-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: var(--naver);
+      color: var(--white);
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .admin-upload-btn:hover { background: var(--naver-dark); }
+    .admin-remove-btn {
+      padding: 8px 14px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      color: var(--gray);
+      border-radius: 7px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .admin-remove-btn:hover { border-color: #d94f4f; color: #d94f4f; }
 
-.cert-list { display: flex; flex-direction: column; gap: 12px; margin: 32px 0; }
-.cert-item {
-  display: flex; align-items: center; gap: 14px;
-  background: white; border-radius: 12px;
-  padding: 14px 18px; box-shadow: var(--shadow-sm);
-}
-.cert-dot {
-  width: 8px; height: 8px; flex-shrink: 0;
-  background: var(--gold); border-radius: 50%;
-}
-.cert-item span { font-size: 14px; color: var(--navy); font-weight: 500; }
+    .admin-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--gray-light);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .admin-save-btn {
+      flex: 1;
+      padding: 11px;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: background 0.2s;
+    }
+    .admin-save-btn:hover { background: var(--naver-dark); }
+    .admin-save-msg { font-size: 12px; color: var(--naver); font-weight: 700; white-space: nowrap; }
 
-.philosophy-box {
-  background: var(--navy); border-radius: 20px;
-  padding: 28px; margin-top: 24px;
-}
-.philosophy-box p {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 15px; color: rgba(255,255,255,0.8);
-  line-height: 1.9; font-style: italic;
-}
-.philosophy-box .author {
-  font-size: 13px; color: var(--gold);
-  margin-top: 16px; font-style: normal;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500;
-}
+    /* ── PASSWORD MODAL ── */
+    .pw-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30,45,64,0.55);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+    .pw-box {
+      background: #fff;
+      border-radius: 18px;
+      padding: 40px 36px 32px;
+      width: 340px;
+      max-width: 92vw;
+      box-shadow: 0 32px 80px rgba(30,45,64,0.22);
+      border: 1px solid var(--border);
+      text-align: center;
+      animation: slideDown 0.22s ease;
+    }
+    .pw-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--naver-light);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 26px;
+    }
+    .pw-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+    .pw-sub {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+    .pw-input-wrap { position: relative; margin-bottom: 10px; }
+    #pwInput {
+      width: 100%;
+      padding: 13px 16px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 20px;
+      letter-spacing: 6px;
+      text-align: center;
+      font-family: monospace;
+      color: var(--navy);
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    #pwInput:focus { border-color: var(--naver); }
+    .pw-error {
+      display: none;
+      font-size: 12px;
+      color: #d94f4f;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .pw-btn {
+      width: 100%;
+      padding: 13px;
+      background: var(--naver);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .pw-btn:hover { background: var(--naver-dark); }
+    .pw-cancel {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--gray);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .pw-cancel:hover { color: var(--navy); }
 
-.specialties {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 10px; margin-top: 24px;
-}
-.specialty-tag {
-  background: rgba(10,22,40,0.06); border: 1px solid rgba(10,22,40,0.08);
-  padding: 10px 16px; border-radius: 50px;
-  font-size: 13px; font-weight: 500; color: var(--navy);
-  text-align: center;
-}
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding: 120px 40px 80px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(160deg, #ffffff 60%, #e8faf1 100%);
+      position: relative;
+      overflow: hidden;
+    }
 
-/* ===== SYMPTOMS ===== */
-#symptoms { background: var(--white); }
-.symptoms-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 24px; margin-top: 60px;
-}
-.symptom-card {
-  background: var(--off-white); border-radius: 20px;
-  padding: 36px 28px; text-align: center;
-  border: 1px solid rgba(10,22,40,0.06);
-  transition: all 0.4s var(--transition);
-  position: relative; overflow: hidden;
-  cursor: pointer;
-}
-.symptom-card::before {
-  content: ''; position: absolute; inset: 0;
-  background: var(--navy); opacity: 0;
-  transition: opacity 0.4s;
-  border-radius: 20px;
-}
-.symptom-card:hover::before { opacity: 1; }
-.symptom-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-.symptom-card:hover .symptom-icon { background: rgba(201,168,76,0.2); }
-.symptom-card:hover .symptom-title { color: var(--white); }
-.symptom-card:hover .symptom-desc { color: rgba(255,255,255,0.65); }
-.symptom-icon {
-  width: 72px; height: 72px; margin: 0 auto 20px;
-  background: rgba(201,168,76,0.1);
-  border-radius: 20px; display: flex; align-items: center; justify-content: center;
-  font-size: 32px; transition: all 0.3s;
-  position: relative; z-index: 1;
-}
-.symptom-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 18px; font-weight: 600; color: var(--navy);
-  margin-bottom: 10px; transition: color 0.3s;
-  position: relative; z-index: 1;
-}
-.symptom-desc {
-  font-size: 13px; color: var(--gray-dark);
-  line-height: 1.7; transition: color 0.3s;
-  position: relative; z-index: 1;
-}
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(3,199,90,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-/* ===== PROCESS ===== */
-#process { background: var(--navy); }
-#process .section-title { color: var(--white); }
-#process .section-sub { color: rgba(255,255,255,0.6); }
-.process-steps {
-  display: flex; gap: 0; margin-top: 60px;
-  position: relative;
-}
-.process-steps::before {
-  content: ''; position: absolute;
-  top: 40px; left: 40px; right: 40px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.2));
-}
-.process-step {
-  flex: 1; text-align: center; position: relative; padding: 0 16px;
-}
-.step-num {
-  width: 80px; height: 80px; margin: 0 auto 24px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 24px; font-weight: 700; color: var(--navy);
-  position: relative; z-index: 1;
-  box-shadow: 0 8px 24px rgba(201,168,76,0.4);
-}
-.step-title {
-  font-size: 16px; font-weight: 600; color: var(--white);
-  margin-bottom: 10px;
-}
-.step-desc {
-  font-size: 13px; color: rgba(255,255,255,0.5);
-  line-height: 1.7;
-}
-.step-icon { font-size: 24px; margin-bottom: 12px; }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
 
-/* ===== REVIEWS ===== */
-#reviews { background: var(--off-white); }
-.reviews-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 24px; margin-top: 60px;
-}
-.review-card {
-  background: var(--white); border-radius: 20px;
-  padding: 32px 28px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(10,22,40,0.04);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.review-stars { color: var(--gold); font-size: 16px; letter-spacing: 2px; margin-bottom: 16px; }
-.review-text {
-  font-size: 14px; color: var(--gray-dark);
-  line-height: 1.85; margin-bottom: 24px;
-  font-style: italic;
-}
-.reviewer {
-  display: flex; align-items: center; gap: 12px;
-  padding-top: 20px; border-top: 1px solid var(--gray-light);
-}
-.reviewer-avatar {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--navy), var(--navy-light));
-  display: flex; align-items: center; justify-content: center;
-  color: white; font-size: 16px; font-weight: 700;
-  font-family: 'Noto Serif KR', serif;
-}
-.reviewer-name { font-size: 14px; font-weight: 600; color: var(--navy); }
-.reviewer-tag { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--naver-light);
+      color: var(--naver-dark);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(3,199,90,0.3);
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--naver);
+      display: inline-block;
+    }
 
-/* ===== GALLERY ===== */
-#gallery { background: var(--white); }
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto;
-  gap: 16px; margin-top: 60px;
-}
-.gallery-item {
-  border-radius: 16px; overflow: hidden;
-  position: relative; cursor: pointer;
-  background: var(--gray-light);
-  aspect-ratio: 1;
-  transition: transform 0.3s;
-}
-.gallery-item:first-child {
-  grid-column: span 2; grid-row: span 2;
-  aspect-ratio: auto;
-}
-.gallery-item:hover { transform: scale(0.98); }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-.gallery-placeholder {
-  width: 100%; height: 100%; min-height: 200px;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 8px; color: var(--gray);
-  font-size: 13px; text-align: center; padding: 20px;
-}
-.gallery-placeholder svg {
-  width: 32px; height: 32px; fill: var(--gray);
-  margin-bottom: 4px;
-}
-.gallery-overlay {
-  position: absolute; inset: 0;
-  background: rgba(10,22,40,0.6);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; transition: opacity 0.3s;
-  color: white; font-size: 13px; flex-direction: column; gap: 6px;
-}
-.gallery-item:hover .gallery-overlay { opacity: 1; }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      color: var(--navy);
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--naver);
+    }
 
-/* ===== BOOKING ===== */
-#booking { background: var(--navy); text-align: center; }
-#booking .section-title { color: var(--white); }
-#booking .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 50px; }
-.booking-buttons {
-  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-}
-.btn-naver {
-  background: #03C75A; color: white;
-  font-size: 15px; font-weight: 700;
-  padding: 16px 36px; border-radius: 50px;
-  text-decoration: none; border: none; cursor: pointer;
-  transition: all 0.3s var(--transition);
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-.btn-naver:hover { background: #02b350; transform: translateY(-2px); }
-.btn-phone {
-  background: rgba(255,255,255,0.1); color: white;
-  border: 1.5px solid rgba(255,255,255,0.3);
-  font-size: 15px; font-weight: 700;
-  padding: 16px 36px; border-radius: 50px;
-  text-decoration: none; cursor: pointer;
-  transition: all 0.3s var(--transition);
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-.btn-phone:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .hero-desc {
+      font-size: 17px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
 
-.booking-info {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 24px; margin-top: 60px;
-}
-.booking-info-item {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px; padding: 24px;
-}
-.info-icon { font-size: 28px; margin-bottom: 12px; }
-.info-title { font-size: 13px; color: var(--gold); font-weight: 600; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
-.info-content { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; }
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
-/* ===== LOCATION ===== */
-#location { background: var(--off-white); }
-.location-grid {
-  display: grid; grid-template-columns: 1.2fr 1fr;
-  gap: 60px; align-items: start;
-}
-.map-wrap {
-  border-radius: 20px; overflow: hidden;
-  box-shadow: var(--shadow); aspect-ratio: 4/3;
-  background: linear-gradient(135deg, #d4dae6 0%, #c1c9d8 100%);
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-}
-.map-placeholder {
-  text-align: center; color: var(--gray-dark);
-  padding: 40px;
-}
-.map-placeholder h3 { font-size: 18px; margin-bottom: 8px; color: var(--navy); }
-.map-placeholder p { font-size: 14px; line-height: 1.7; }
-.location-info { display: flex; flex-direction: column; gap: 24px; }
-.location-item {
-  background: white; border-radius: 16px;
-  padding: 24px; box-shadow: var(--shadow-sm);
-}
-.location-item h4 {
-  font-size: 12px; font-weight: 700; letter-spacing: 2px;
-  color: var(--gold); text-transform: uppercase; margin-bottom: 12px;
-}
-.location-item p { font-size: 14px; color: var(--gray-dark); line-height: 1.8; }
-.hours-grid { display: grid; gap: 6px; }
-.hour-row {
-  display: flex; justify-content: space-between;
-  font-size: 14px; padding: 4px 0;
-  border-bottom: 1px solid var(--gray-light);
-}
-.hour-row:last-child { border: none; }
-.hour-day { color: var(--navy); font-weight: 500; }
-.hour-time { color: var(--gray-dark); }
+    .btn-primary {
+      background: var(--naver);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--naver-dark); transform: translateY(-2px); }
 
-/* ===== BLOG ===== */
-#blog { background: var(--white); }
-.blog-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 28px; margin-top: 60px;
-}
-.blog-card {
-  border-radius: 20px; overflow: hidden;
-  border: 1px solid rgba(10,22,40,0.06);
-  transition: transform 0.3s, box-shadow 0.3s;
-  background: var(--off-white);
-}
-.blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.blog-img {
-  aspect-ratio: 16/10; overflow: hidden;
-  background: linear-gradient(135deg, #e8edf5, #d0daea);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--gray); font-size: 13px;
-}
-.blog-img img { width: 100%; height: 100%; object-fit: cover; }
-.blog-content { padding: 24px; }
-.blog-tag {
-  display: inline-block;
-  background: rgba(201,168,76,0.12); color: var(--gold);
-  font-size: 11px; font-weight: 600; letter-spacing: 1px;
-  padding: 4px 12px; border-radius: 50px; margin-bottom: 12px;
-  text-transform: uppercase;
-}
-.blog-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 16px; font-weight: 600; color: var(--navy);
-  line-height: 1.5; margin-bottom: 10px;
-}
-.blog-excerpt { font-size: 13px; color: var(--gray-dark); line-height: 1.7; }
-.blog-meta {
-  display: flex; align-items: center; gap: 8px;
-  margin-top: 16px; padding-top: 16px;
-  border-top: 1px solid rgba(10,22,40,0.06);
-  font-size: 12px; color: var(--gray);
-}
+    .btn-secondary {
+      background: var(--white);
+      color: var(--navy);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--naver); color: var(--naver); transform: translateY(-2px); }
 
-/* ===== FOOTER ===== */
-footer {
-  background: #070e1c; padding: 60px 24px 32px;
-}
-.footer-inner {
-  max-width: 1200px; margin: 0 auto;
-}
-.footer-top {
-  display: grid; grid-template-columns: 2fr 1fr 1fr;
-  gap: 60px; margin-bottom: 48px;
-}
-.footer-logo {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 22px; font-weight: 600;
-  color: white; margin-bottom: 16px;
-}
-.footer-logo span { color: var(--gold); }
-.footer-desc { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.8; }
-.footer-col h4 {
-  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--gold); font-weight: 600; margin-bottom: 20px;
-}
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-col a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-.footer-col a:hover { color: rgba(255,255,255,0.9); }
-.footer-bottom {
-  padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06);
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 13px; color: rgba(255,255,255,0.25);
-}
+    /* Hero Profile Card */
+    .hero-card {
+      background: var(--white);
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      padding: 40px 32px;
+      box-shadow: 0 20px 60px rgba(30,45,64,0.08);
+      position: relative;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--naver);
+      border-radius: 20px 20px 0 0;
+    }
 
-/* ===== ADMIN ===== */
-.admin-trigger {
-  position: fixed; bottom: 8px; right: 8px; z-index: 9998;
-  width: 6px; height: 6px; border-radius: 50%;
-  background: rgba(10,22,40,0.15);
-  cursor: pointer; transition: background 0.3s;
-}
-.admin-trigger:hover { background: rgba(10,22,40,0.4); }
+    /* ── PROFILE PHOTO UPLOAD ── */
+    .profile-photo-wrap {
+      width: 100%;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .profile-photo-label {
+      display: block;
+      width: 100%;
+      height: 200px;
+      border-radius: 14px;
+      border: 2px dashed var(--naver);
+      background: var(--naver-light);
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .profile-photo-label:hover {
+      background: #d4f5e5;
+      border-color: var(--naver-dark);
+    }
+    .profile-photo-label:hover .photo-overlay { opacity: 1; }
 
-.admin-overlay {
-  display: none; position: fixed; inset: 0; z-index: 9999;
-  background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
-  align-items: center; justify-content: center;
-}
-.admin-overlay.open { display: flex; }
+    .profile-photo-label input[type="file"] {
+      display: none;
+    }
+    #avatarImg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+      border-radius: 12px;
+    }
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .photo-placeholder-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--naver);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-placeholder-icon svg {
+      width: 26px; height: 26px;
+      fill: #fff;
+    }
+    .photo-placeholder-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--naver-dark);
+    }
+    .photo-placeholder-sub {
+      font-size: 12px;
+      color: var(--gray);
+    }
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      opacity: 0;
+      transition: opacity 0.2s;
+      border-radius: 12px;
+    }
+    .photo-overlay svg { width: 28px; height: 28px; fill: #fff; }
+    .photo-overlay span { font-size: 13px; color: #fff; font-weight: 700; }
 
-.admin-panel {
-  background: white; border-radius: 24px;
-  width: min(900px, 95vw); max-height: 90vh;
-  overflow: hidden; display: flex; flex-direction: column;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
-}
-.admin-header {
-  background: var(--navy); padding: 20px 28px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.admin-header h2 {
-  font-size: 18px; color: white; font-weight: 600;
-  font-family: 'Noto Serif KR', serif;
-}
-.admin-header h2 span { color: var(--gold); }
-.admin-close {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: rgba(255,255,255,0.1); border: none; cursor: pointer;
-  color: white; font-size: 18px; display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s;
-}
-.admin-close:hover { background: rgba(255,255,255,0.2); }
+    .profile-name {
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+    .profile-title {
+      font-size: 13px;
+      color: var(--naver-dark);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
 
-.admin-login {
-  padding: 60px 40px; text-align: center;
-}
-.admin-login h3 { font-size: 20px; color: var(--navy); margin-bottom: 8px; }
-.admin-login p { font-size: 14px; color: var(--gray); margin-bottom: 32px; }
-.admin-input {
-  width: 100%; max-width: 280px; padding: 14px 20px;
-  border: 2px solid var(--gray-light); border-radius: 50px;
-  font-size: 16px; text-align: center; letter-spacing: 4px;
-  outline: none; transition: border-color 0.2s;
-  font-family: 'Noto Sans KR', sans-serif;
-  display: block; margin: 0 auto 16px;
-}
-.admin-input:focus { border-color: var(--navy); }
-.admin-input-btn {
-  background: var(--navy); color: white;
-  padding: 14px 40px; border-radius: 50px;
-  border: none; font-size: 15px; font-weight: 600;
-  cursor: pointer; transition: all 0.2s;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-.admin-input-btn:hover { background: var(--navy-light); }
-.admin-error { color: #e53e3e; font-size: 13px; margin-top: 12px; display: none; }
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tag {
+      background: var(--gray-light);
+      color: var(--navy-mid);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+    }
 
-.admin-body { flex: 1; overflow-y: auto; }
-.admin-tabs {
-  display: flex; border-bottom: 2px solid var(--gray-light);
-  padding: 0 24px; gap: 4px;
-}
-.admin-tab {
-  padding: 16px 20px; font-size: 14px; font-weight: 500;
-  color: var(--gray); background: none; border: none;
-  cursor: pointer; border-bottom: 2px solid transparent;
-  margin-bottom: -2px; transition: all 0.2s;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-.admin-tab.active { color: var(--navy); border-bottom-color: var(--navy); }
-.admin-content { padding: 28px; display: none; }
-.admin-content.active { display: block; }
+    .profile-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .stat-item {
+      background: var(--white);
+      padding: 16px 12px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--naver);
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--gray);
+      margin-top: 2px;
+    }
 
-.admin-section { margin-bottom: 32px; }
-.admin-section h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 16px; }
-.admin-row { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-.admin-row label { font-size: 13px; color: var(--gray-dark); font-weight: 500; }
-.admin-field {
-  width: 100%; padding: 12px 16px;
-  border: 1.5px solid var(--gray-light); border-radius: 12px;
-  font-size: 14px; outline: none;
-  transition: border-color 0.2s;
-  font-family: 'Noto Sans KR', sans-serif;
-  color: var(--text);
-}
-.admin-field:focus { border-color: var(--navy); }
-textarea.admin-field { min-height: 100px; resize: vertical; }
+    /* ── SECTION COMMON ── */
+    section { padding: 100px 40px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
 
-.upload-zone {
-  border: 2px dashed var(--gray-light); border-radius: 16px;
-  padding: 32px; text-align: center;
-  cursor: pointer; transition: all 0.3s;
-}
-.upload-zone:hover { border-color: var(--gold); background: rgba(201,168,76,0.03); }
-.upload-zone p { font-size: 14px; color: var(--gray); margin-top: 8px; }
-.upload-zone svg { width: 36px; height: 36px; fill: var(--gray); }
-.upload-zone input { display: none; }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--naver);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 56px;
+    }
 
-.gallery-admin-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 12px; margin-top: 16px;
-}
-.gallery-admin-item {
-  aspect-ratio: 1; border-radius: 12px;
-  overflow: hidden; position: relative;
-  background: var(--gray-light); cursor: pointer;
-}
-.gallery-admin-item img { width: 100%; height: 100%; object-fit: cover; }
-.gallery-admin-item .remove-btn {
-  position: absolute; top: 6px; right: 6px;
-  width: 24px; height: 24px; border-radius: 50%;
-  background: rgba(229,62,62,0.9); color: white;
-  border: none; cursor: pointer; font-size: 14px;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; transition: opacity 0.2s;
-}
-.gallery-admin-item:hover .remove-btn { opacity: 1; }
+    /* ── EDUCATION AREAS ── */
+    .edu-section { background: var(--gray-light); }
 
-.save-btn {
-  background: var(--navy); color: white;
-  padding: 12px 32px; border-radius: 50px;
-  border: none; font-size: 14px; font-weight: 600;
-  cursor: pointer; transition: all 0.2s;
-  font-family: 'Noto Sans KR', sans-serif;
-  margin-top: 8px;
-}
-.save-btn:hover { background: var(--navy-light); transform: translateY(-1px); }
-.save-success {
-  display: inline-block; margin-left: 12px;
-  font-size: 13px; color: #38a169; opacity: 0;
-  transition: opacity 0.3s;
-}
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
 
-.blog-admin-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
-.blog-admin-item {
-  background: var(--off-white); border-radius: 12px;
-  padding: 16px; display: flex; align-items: center;
-  gap: 16px; justify-content: space-between;
-}
-.blog-admin-item-title { font-size: 14px; font-weight: 500; color: var(--navy); }
-.blog-admin-item-date { font-size: 12px; color: var(--gray); }
-.remove-blog-btn {
-  background: none; border: 1px solid #e53e3e; color: #e53e3e;
-  padding: 6px 12px; border-radius: 8px; font-size: 12px;
-  cursor: pointer; transition: all 0.2s; white-space: nowrap;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-.remove-blog-btn:hover { background: #e53e3e; color: white; }
+    .edu-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 36px 32px;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .edu-card::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--naver);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.3s;
+    }
+    .edu-card:hover {
+      border-color: var(--naver);
+      box-shadow: 0 12px 40px rgba(3,199,90,0.12);
+      transform: translateY(-4px);
+    }
+    .edu-card:hover::after { transform: scaleY(1); }
 
-.add-blog-form {
-  background: var(--off-white); border-radius: 16px;
-  padding: 24px; margin-top: 16px;
-}
-.add-blog-form h5 { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 16px; }
+    .edu-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: var(--naver-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
 
-/* ===== ANIMATE ON SCROLL ===== */
-.aos {
-  opacity: 0; transform: translateY(30px);
-  transition: opacity 0.7s var(--transition), transform 0.7s var(--transition);
-}
-.aos.visible { opacity: 1; transform: translateY(0); }
-.aos-delay-1 { transition-delay: 0.1s; }
-.aos-delay-2 { transition-delay: 0.2s; }
-.aos-delay-3 { transition-delay: 0.3s; }
-.aos-delay-4 { transition-delay: 0.4s; }
-.aos-delay-5 { transition-delay: 0.5s; }
+    .edu-card h3 {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+    .edu-card .edu-tagline {
+      font-size: 13px;
+      color: var(--naver-dark);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .edu-card p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  section { padding: 72px 20px; }
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-  .hero-image { max-width: 400px; margin: 0 auto; aspect-ratio: 3/4; }
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-badge { right: 0; }
-  .symptoms-grid { grid-template-columns: repeat(2, 1fr); }
-  .process-steps { flex-wrap: wrap; }
-  .process-steps::before { display: none; }
-  .process-step { flex: 1 1 40%; min-width: 140px; margin-bottom: 24px; }
-  .reviews-grid { grid-template-columns: 1fr 1fr; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-item:first-child { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/9; }
-  .booking-info { grid-template-columns: 1fr; }
-  .location-grid { grid-template-columns: 1fr; }
-  .blog-grid { grid-template-columns: 1fr 1fr; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-}
+    .edu-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .edu-item {
+      background: var(--gray-light);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--navy-mid);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
 
-@media (max-width: 600px) {
-  .hero-title { letter-spacing: -1px; }
-  .hero-stats { gap: 24px; flex-wrap: wrap; justify-content: center; }
-  .symptoms-grid { grid-template-columns: 1fr; }
-  .reviews-grid { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .blog-grid { grid-template-columns: 1fr; }
-  .footer-top { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-  .booking-buttons { flex-direction: column; align-items: center; }
-  .process-step { flex: 1 1 100%; }
-  .hero-buttons { flex-direction: column; align-items: flex-start; }
-  .admin-panel { border-radius: 16px; }
-  .admin-tabs { overflow-x: auto; }
-  .gallery-admin-grid { grid-template-columns: repeat(3, 1fr); }
-}
-</style>
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      padding: 32px 28px;
+      border-radius: 16px;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      border-color: var(--naver);
+      box-shadow: 0 8px 30px rgba(3,199,90,0.1);
+    }
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ── TARGETS ── */
+    .targets-section { background: var(--navy); }
+    .targets-section .section-label { color: var(--naver); }
+    .targets-section .section-title { color: var(--white); }
+    .targets-section .section-sub { color: rgba(255,255,255,0.5); }
+
+    .targets-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .target-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .target-item:hover {
+      background: rgba(3,199,90,0.12);
+      border-color: rgba(3,199,90,0.4);
+      color: var(--white);
+    }
+    .target-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--naver);
+      flex-shrink: 0;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--naver) 0%, #02a849 100%);
+      text-align: center;
+      padding: 100px 40px;
+    }
+    .cta-section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+    .cta-section p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 40px;
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--naver-dark);
+      padding: 16px 36px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 900;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.2); }
+
+    /* ── RECOMMEND SECTION ── */
+    .recommend-section { padding: 80px 40px; background: var(--white); }
+    .recommend-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .recommend-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--navy-mid);
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .recommend-item:hover { background: var(--naver-light); border-color: rgba(3,199,90,0.3); }
+    .check-icon {
+      color: var(--naver);
+      font-size: 16px;
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      padding: 40px;
+      text-align: center;
+      font-size: 13px;
+    }
+    footer strong { color: var(--white); }
+    footer span { color: var(--naver); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      section { padding: 60px 24px; }
+      .edu-grid, .features-grid, .recommend-list { grid-template-columns: 1fr; }
+      .targets-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">이도현<span> 도수치료</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">치료사 소개</a></li>
-      <li><a href="#symptoms">치료 증상</a></li>
-      <li><a href="#process">치료 과정</a></li>
-      <li><a href="#reviews">후기</a></li>
-      <li><a href="#location">오시는 길</a></li>
-      <li><a href="#booking" class="nav-cta">예약하기</a></li>
-    </ul>
-    <div class="hamburger" onclick="toggleMobile()">
-      <span></span><span></span><span></span>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">이시헌<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#education">교육 분야</a></li>
+    <li><a href="#features">강의 특징</a></li>
+    <li><a href="#targets">출강 대상</a></li>
+    <li><a href="#contact" class="nav-cta">문의하기</a></li>
+    <li>
+      <button class="nav-admin-btn" onclick="toggleAdmin()" title="어드민 페이지">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<!-- ── PASSWORD MODAL ── -->
+<div id="pwModal" class="pw-modal" onclick="if(event.target===this)closePwModal()">
+  <div class="pw-box">
+    <div class="pw-icon">🔐</div>
+    <div class="pw-title">어드민 접근</div>
+    <div class="pw-sub">비밀번호를 입력하세요</div>
+    <div class="pw-input-wrap">
+      <input id="pwInput" type="password" maxlength="10" placeholder="••••"
+        onkeydown="if(event.key==='Enter')submitPassword()">
+    </div>
+    <div class="pw-error" id="pwError">❌ 비밀번호가 틀렸습니다</div>
+    <button class="pw-btn" onclick="submitPassword()">확인</button>
+    <br>
+    <button class="pw-cancel" onclick="closePwModal()">취소</button>
+  </div>
+</div>
+
+<!-- ── ADMIN PANEL ── -->
+<div id="adminOverlay" class="admin-overlay" onclick="closeAdminOutside(event)">
+  <div class="admin-panel">
+    <div class="admin-header">
+      <div class="admin-header-left">
+        <div class="admin-logo">⚙️</div>
+        <div>
+          <div class="admin-title">어드민 페이지</div>
+          <div class="admin-subtitle">이미지 및 문구 수정</div>
+        </div>
+      </div>
+      <button class="admin-close" onclick="closeAdmin()">✕</button>
+    </div>
+
+    <div class="admin-body">
+
+      <!-- 프로필 이미지 -->
+      <div class="admin-section">
+        <div class="admin-section-title">📷 프로필 사진</div>
+        <div class="admin-photo-area">
+          <div class="admin-photo-preview-wrap">
+            <img id="adminPhotoPreview" src="" alt="" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            <div id="adminPhotoEmpty" class="admin-photo-empty">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#03C75A"><path d="M12 15.2A3.2 3.2 0 1 0 12 8.8a3.2 3.2 0 0 0 0 6.4zm0 1.6A4.8 4.8 0 1 1 12 7.2a4.8 4.8 0 0 1 0 9.6zM9 3l-1.5 2H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-3.5L15 3H9z"/></svg>
+              <span>사진 없음</span>
+            </div>
+          </div>
+          <div class="admin-photo-actions">
+            <label class="admin-upload-btn">
+              <input type="file" accept="image/*" onchange="adminUploadPhoto(event)" style="display:none;">
+              📁 사진 업로드
+            </label>
+            <button class="admin-remove-btn" onclick="adminRemovePhoto()">🗑 사진 삭제</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 이름 / 직함 -->
+      <div class="admin-section">
+        <div class="admin-section-title">👤 기본 정보</div>
+        <div class="admin-field">
+          <label>강사 이름</label>
+          <input type="text" id="adminName" placeholder="이시헌 강사" oninput="liveUpdate('adminName','profile-name')">
+        </div>
+        <div class="admin-field">
+          <label>직함 / 소개</label>
+          <input type="text" id="adminTitle" placeholder="AI 기술 & 디지털 콘텐츠 제작 전문 강사" oninput="liveUpdate('adminTitle','profile-title')">
+        </div>
+        <div class="admin-field">
+          <label>상단 뱃지 문구</label>
+          <input type="text" id="adminBadge" placeholder="AI 디지털 콘텐츠 교육 전문" oninput="liveUpdateSingle('adminBadge','.hero-badge')">
+        </div>
+      </div>
+
+      <!-- 히어로 문구 -->
+      <div class="admin-section">
+        <div class="admin-section-title">🦸 히어로 섹션</div>
+        <div class="admin-field">
+          <label>메인 헤드라인</label>
+          <textarea id="adminHeadline" rows="3" placeholder="AI로 바꾸는 디지털 실력, 결과로 증명합니다" oninput="liveUpdateHTML('adminHeadline','hero h1')"></textarea>
+        </div>
+        <div class="admin-field">
+          <label>서브 설명</label>
+          <textarea id="adminDesc" rows="3" placeholder="홈페이지 제작부터 영상 편집..." oninput="liveUpdateSingle('adminDesc','.hero-desc')"></textarea>
+        </div>
+      </div>
+
+      <!-- 통계 수치 -->
+      <div class="admin-section">
+        <div class="admin-section-title">📊 프로필 통계</div>
+        <div class="admin-field-row">
+          <div class="admin-field">
+            <label>교육 분야 수치</label>
+            <input type="text" id="adminStat1" placeholder="4+" oninput="liveUpdateNth('adminStat1','.stat-num',0)">
+          </div>
+          <div class="admin-field">
+            <label>출강 기관 수치</label>
+            <input type="text" id="adminStat2" placeholder="다수" oninput="liveUpdateNth('adminStat2','.stat-num',1)">
+          </div>
+          <div class="admin-field">
+            <label>실습 중심 수치</label>
+            <input type="text" id="adminStat3" placeholder="100%" oninput="liveUpdateNth('adminStat3','.stat-num',2)">
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA 섹션 -->
+      <div class="admin-section">
+        <div class="admin-section-title">📣 문의 섹션</div>
+        <div class="admin-field">
+          <label>CTA 제목</label>
+          <input type="text" id="adminCtaTitle" placeholder="지금 바로 강의를 문의하세요" oninput="liveUpdateSingle('adminCtaTitle','.cta-section h2')">
+        </div>
+        <div class="admin-field">
+          <label>CTA 설명</label>
+          <input type="text" id="adminCtaDesc" placeholder="대상과 목적에 맞는 맞춤형 커리큘럼을 제안드립니다" oninput="liveUpdateSingle('adminCtaDesc','.cta-section p')">
+        </div>
+        <div class="admin-field">
+          <label>이메일 주소</label>
+          <input type="email" id="adminEmail" placeholder="contact@example.com" oninput="updateEmail()">
+        </div>
+      </div>
+
+    </div><!-- /admin-body -->
+
+    <div class="admin-footer">
+      <button class="admin-save-btn" onclick="saveAll()">💾 변경사항 저장</button>
+      <div class="admin-save-msg" id="adminSaveMsg"></div>
     </div>
   </div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <ul>
-    <li><a href="#about" onclick="closeMobile()">치료사 소개</a></li>
-    <li><a href="#symptoms" onclick="closeMobile()">치료 증상</a></li>
-    <li><a href="#process" onclick="closeMobile()">치료 과정</a></li>
-    <li><a href="#reviews" onclick="closeMobile()">후기</a></li>
-    <li><a href="#gallery" onclick="closeMobile()">공간 소개</a></li>
-    <li><a href="#location" onclick="closeMobile()">오시는 길</a></li>
-    <li><a href="#booking" onclick="closeMobile()">예약하기</a></li>
-  </ul>
 </div>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-pattern"></div>
+<section class="hero">
   <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-badge" id="heroBadge">프리미엄 도수치료 전문</div>
-      <h1 class="hero-title" id="heroTitle">
-        몸의 균형을<br>되찾는<br><em>정밀한 손길</em>
-      </h1>
-      <p class="hero-desc" id="heroDesc">
-        체계적인 평가와 근거 중심의 맞춤형 도수치료로<br>
-        통증의 근본 원인을 해결하고<br>
-        건강한 일상을 되찾아 드립니다.
+    <div class="hero-text">
+      <div class="hero-badge">AI 디지털 콘텐츠 교육 전문</div>
+      <h1>AI로 바꾸는<br><em>디지털 실력</em>,<br>결과로 증명합니다</h1>
+      <p class="hero-desc">
+        홈페이지 제작부터 영상 편집, 유튜브·인스타그램 운영까지<br>
+        생성형 AI를 활용한 실무 중심 교육을 제공합니다.
       </p>
-      <div class="hero-buttons">
-        <a href="#booking" class="btn-primary">📅 지금 예약하기</a>
-        <a href="https://open.kakao.com/o/your-id" class="btn-kakao" target="_blank">💬 카카오톡 상담</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num" id="stat1">8+</span>
-          <span class="stat-label">임상 경력</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" id="stat2">3,000+</span>
-          <span class="stat-label">누적 환자</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" id="stat3">98%</span>
-          <span class="stat-label">만족도</span>
-        </div>
+      <div class="hero-btns">
+        <a href="#education" class="btn-primary">교육 분야 보기</a>
+        <a href="#contact" class="btn-secondary">강의 문의</a>
       </div>
     </div>
-    <div class="hero-image">
-      <div class="hero-img-placeholder" id="heroImgWrap" onclick="adminTriggerUpload('hero')">
-        <div class="hero-img-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-        </div>
-        <p>전문적인 치료 이미지<br><small style="opacity:0.5;font-size:11px">관리자 모드에서 업로드</small></p>
-        <div class="upload-hint">
-          <svg viewBox="0 0 24 24" width="28" fill="white"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
-          이미지 업로드
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="hero-card-text">
-          <h4>검증된 전문 치료사</h4>
-          <p>다수의 전문 자격증 보유</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-indicator">SCROLL</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-image-wrap aos">
-        <div class="about-deco"></div>
-        <div class="about-img" id="aboutImgWrap">
-          <div class="about-img-placeholder" id="aboutImgPlaceholder">
-            <div style="text-align:center;color:var(--gray);padding:40px;">
-              <div style="font-size:48px;margin-bottom:12px;">👨‍⚕️</div>
-              <p style="font-size:14px;">치료사 프로필 사진</p>
-              <small style="font-size:11px;opacity:0.6">관리자 모드에서 업로드</small>
+    <div class="hero-card">
+      <div class="profile-photo-wrap">
+        <label class="profile-photo-label" title="클릭하여 프로필 사진 업로드">
+          <input type="file" id="avatarInput" accept="image/*" onchange="changeAvatar(event)">
+          <img id="avatarImg" alt="프로필 사진">
+          <div class="photo-placeholder" id="avatarPlaceholder">
+            <div class="photo-placeholder-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 15.2A3.2 3.2 0 1 0 12 8.8a3.2 3.2 0 0 0 0 6.4zm0 1.6A4.8 4.8 0 1 1 12 7.2a4.8 4.8 0 0 1 0 9.6zM9 3l-1.5 2H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-3.5L15 3H9z"/></svg>
             </div>
+            <div class="photo-placeholder-text">프로필 사진 업로드</div>
+            <div class="photo-placeholder-sub">클릭하여 사진을 선택하세요</div>
           </div>
-          <div class="upload-hint">
-            <svg viewBox="0 0 24 24" width="28" fill="white"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
-            이미지 업로드
+          <div class="photo-overlay" id="photoOverlay" style="display:none;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 15.2A3.2 3.2 0 1 0 12 8.8a3.2 3.2 0 0 0 0 6.4zm0 1.6A4.8 4.8 0 1 1 12 7.2a4.8 4.8 0 0 1 0 9.6zM9 3l-1.5 2H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-3.5L15 3H9z"/></svg>
+            <span>사진 변경</span>
           </div>
-        </div>
-        <div class="about-badge">
-          <div class="num">8+</div>
-          <div class="txt">년 경력</div>
-        </div>
+        </label>
       </div>
-      <div class="about-content">
-        <span class="section-label aos">치료사 소개</span>
-        <h2 class="section-title aos">이도현<br>도수치료 전문가</h2>
-        <div class="divider aos"></div>
-        <p class="section-sub aos" id="aboutDesc">
-          8년 이상의 임상 경험을 바탕으로 각 환자의 체형과 생활 패턴을 정밀하게 분석하여
-          가장 효과적인 치료 방법을 제시합니다. 단순한 통증 완화가 아닌,
-          근본적인 원인 해결을 통해 지속적인 건강 유지를 도와드립니다.
-        </p>
-
-        <div class="cert-list aos" style="margin-top:28px;" id="certList">
-          <div class="cert-item">
-            <div class="cert-dot"></div>
-            <span>물리치료사 면허증</span>
-          </div>
-          <div class="cert-item">
-            <div class="cert-dot"></div>
-            <span>도수치료 전문가 과정 수료</span>
-          </div>
-          <div class="cert-item">
-            <div class="cert-dot"></div>
-            <span>스포츠 재활 전문 자격증</span>
-          </div>
-          <div class="cert-item">
-            <div class="cert-dot"></div>
-            <span>체형교정 전문가 자격증</span>
-          </div>
+      <div class="profile-name">이시헌 강사</div>
+      <div class="profile-title">AI 기술 & 디지털 콘텐츠 제작 전문 강사</div>
+      <div class="profile-tags">
+        <span class="tag">AI 홈페이지 제작</span>
+        <span class="tag">AI 영상 제작</span>
+        <span class="tag">유튜브 운영</span>
+        <span class="tag">인스타그램 브랜딩</span>
+        <span class="tag">업무 자동화</span>
+        <span class="tag">디지털 마케팅</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat-item">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">교육 분야</div>
         </div>
-
-        <div class="philosophy-box aos">
-          <p id="philosophyText">"모든 치료는 환자의 이야기에서 시작됩니다. 각각의 통증은 그 사람만의 고유한 이야기를 담고 있습니다. 저는 그 이야기에 귀 기울이며, 몸이 스스로 회복하는 힘을 되찾도록 도와드립니다."</p>
-          <div class="author">— 이도현 치료사</div>
+        <div class="stat-item">
+          <div class="stat-num">다수</div>
+          <div class="stat-label">출강 기관</div>
         </div>
-
-        <div class="specialties aos">
-          <div class="specialty-tag">척추 교정</div>
-          <div class="specialty-tag">골반 교정</div>
-          <div class="specialty-tag">스포츠 재활</div>
-          <div class="specialty-tag">체형 교정</div>
-          <div class="specialty-tag">통증 치료</div>
-          <div class="specialty-tag">자세 교정</div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">실습 중심</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SYMPTOMS -->
-<section id="symptoms">
-  <div class="container">
-    <div style="text-align:center;">
-      <span class="section-label aos">치료 가능 증상</span>
-      <h2 class="section-title aos">이런 증상으로 고민이신가요?</h2>
-      <div class="divider aos" style="margin:20px auto 0;"></div>
-    </div>
-    <div class="symptoms-grid" id="symptomsGrid">
-      <div class="symptom-card aos">
-        <div class="symptom-icon">🦒</div>
-        <div class="symptom-title">거북목 증후군</div>
-        <div class="symptom-desc">장시간 스마트폰·컴퓨터 사용으로 인한 목 앞쪽 통증과 두통을 개선합니다.</div>
-      </div>
-      <div class="symptom-card aos aos-delay-1">
-        <div class="symptom-icon">🔙</div>
-        <div class="symptom-title">허리 통증</div>
-        <div class="symptom-desc">만성 요통, 디스크, 협착증 등 다양한 원인의 허리 문제를 치료합니다.</div>
-      </div>
-      <div class="symptom-card aos aos-delay-2">
-        <div class="symptom-icon">⚖️</div>
-        <div class="symptom-title">골반 교정</div>
-        <div class="symptom-desc">골반 틀어짐으로 인한 다리 길이 차이, 보행 이상, 하체 불균형을 바로잡습니다.</div>
-      </div>
-      <div class="symptom-card aos aos-delay-3">
-        <div class="symptom-icon">🔄</div>
-        <div class="symptom-title">라운드 숄더</div>
-        <div class="symptom-desc">굽은 어깨로 인한 어깨 통증과 목 뻐근함, 호흡 문제를 해결합니다.</div>
-      </div>
-      <div class="symptom-card aos aos-delay-4">
-        <div class="symptom-icon">🧍</div>
-        <div class="symptom-title">체형 교정</div>
-        <div class="symptom-desc">전신 체형 불균형을 분석하고 바른 자세를 위한 맞춤 교정 치료를 제공합니다.</div>
-      </div>
-      <div class="symptom-card aos aos-delay-5">
-        <div class="symptom-icon">🏃</div>
-        <div class="symptom-title">스포츠 재활</div>
-        <div class="symptom-desc">운동 부상 후 기능 회복과 재발 방지를 위한 전문적인 재활 치료를 진행합니다.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="container">
-    <div style="text-align:center;">
-      <span class="section-label aos" style="color:var(--gold-light);">치료 프로세스</span>
-      <h2 class="section-title aos">5단계 맞춤 치료 시스템</h2>
-      <div class="divider aos" style="margin:20px auto 0;"></div>
-    </div>
-    <div class="process-steps">
-      <div class="process-step aos">
-        <div class="step-num">01</div>
-        <div class="step-icon">💬</div>
-        <div class="step-title">초진 상담</div>
-        <div class="step-desc">증상과 생활 패턴에 대한 정밀 문진으로 치료 방향을 설정합니다.</div>
-      </div>
-      <div class="process-step aos aos-delay-1">
-        <div class="step-num">02</div>
-        <div class="step-icon">📐</div>
-        <div class="step-title">체형 분석</div>
-        <div class="step-desc">전신 체형 사진과 측정으로 불균형 부위를 정확히 파악합니다.</div>
-      </div>
-      <div class="process-step aos aos-delay-2">
-        <div class="step-num">03</div>
-        <div class="step-icon">🎯</div>
-        <div class="step-title">움직임 평가</div>
-        <div class="step-desc">관절 가동범위와 근육 기능을 평가하여 문제의 원인을 진단합니다.</div>
-      </div>
-      <div class="process-step aos aos-delay-3">
-        <div class="step-num">04</div>
-        <div class="step-icon">🤲</div>
-        <div class="step-title">맞춤 치료</div>
-        <div class="step-desc">평가 결과를 바탕으로 개인에게 최적화된 도수치료를 진행합니다.</div>
-      </div>
-      <div class="process-step aos aos-delay-4">
-        <div class="step-num">05</div>
-        <div class="step-icon">💪</div>
-        <div class="step-title">운동 가이드</div>
-        <div class="step-desc">치료 효과를 유지하는 맞춤형 홈 운동 프로그램을 제공합니다.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section id="reviews">
-  <div class="container">
-    <span class="section-label aos">실제 후기</span>
-    <h2 class="section-title aos">환자분들의 생생한 이야기</h2>
-    <div class="divider aos"></div>
-    <div class="reviews-grid" id="reviewsGrid">
-      <div class="review-card aos">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"3년 넘게 시달리던 허리 통증이 5회 치료 만에 현저히 줄었어요. 단순히 치료만 하는 것이 아니라 왜 아픈지, 어떻게 예방해야 하는지 자세히 설명해 주셔서 더 믿음이 갔습니다."</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">김</div>
-          <div>
-            <div class="reviewer-name">김○○ 님</div>
-            <div class="reviewer-tag">허리 통증 치료 · 40대</div>
-          </div>
+<!-- EDUCATION -->
+<section class="edu-section" id="education">
+  <div class="section-inner">
+    <div class="section-label">EDUCATION</div>
+    <h2 class="section-title">교육 분야</h2>
+    <p class="section-sub">강의가 끝나면 실제로 사용할 수 있는 결과물을 갖게 됩니다</p>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-icon">🌐</div>
+        <h3>홈페이지 제작 교육</h3>
+        <div class="edu-tagline">AI로 만드는 반응형 홈페이지</div>
+        <p>코딩 경험이 없어도 AI를 활용하여 전문적인 홈페이지를 제작할 수 있습니다. 기획부터 배포까지 전 과정을 실습합니다.</p>
+        <div class="edu-items">
+          <span class="edu-item">웹사이트 기획</span>
+          <span class="edu-item">랜딩페이지</span>
+          <span class="edu-item">반응형 제작</span>
+          <span class="edu-item">GitHub 활용</span>
+          <span class="edu-item">Netlify 배포</span>
+          <span class="edu-item">SEO 최적화</span>
         </div>
       </div>
-      <div class="review-card aos aos-delay-1">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"오른쪽 어깨가 훨씬 높아 고민이었는데 체형 분석부터 꼼꼼하게 봐주셨어요. 치료 후 사진을 비교해보니 확실히 달라진 게 느껴져서 너무 신기하고 뿌듯했습니다."</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">박</div>
-          <div>
-            <div class="reviewer-name">박○○ 님</div>
-            <div class="reviewer-tag">체형 교정 · 20대</div>
-          </div>
+      <div class="edu-card">
+        <div class="edu-icon">🎬</div>
+        <h3>AI 영상 제작 교육</h3>
+        <div class="edu-tagline">누구나 만드는 고품질 영상 콘텐츠</div>
+        <p>AI 도구를 활용하여 기획부터 편집까지 빠르고 효율적으로 영상을 제작합니다. 쇼츠부터 기업 홍보까지 다양한 형식을 다룹니다.</p>
+        <div class="edu-items">
+          <span class="edu-item">이미지 생성</span>
+          <span class="edu-item">영상 생성</span>
+          <span class="edu-item">AI 음성</span>
+          <span class="edu-item">자막 자동생성</span>
+          <span class="edu-item">캡컷 편집</span>
+          <span class="edu-item">쇼츠 제작</span>
         </div>
       </div>
-      <div class="review-card aos aos-delay-2">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"운동하다 무릎 부상 후 재활을 받았는데 전문적이고 체계적인 관리 덕분에 예상보다 빠르게 복귀할 수 있었습니다. 재활 운동 가이드도 정말 도움이 많이 됐어요."</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">이</div>
-          <div>
-            <div class="reviewer-name">이○○ 님</div>
-            <div class="reviewer-tag">스포츠 재활 · 30대</div>
-          </div>
+      <div class="edu-card">
+        <div class="edu-icon">▶️</div>
+        <h3>유튜브 운영 교육</h3>
+        <div class="edu-tagline">조회수와 구독자를 만드는 채널 운영 전략</div>
+        <p>채널 개설부터 콘텐츠 제작, 운영 전략까지 실무 중심으로 교육합니다. 유튜브 알고리즘을 이해하고 성장하는 채널을 만듭니다.</p>
+        <div class="edu-items">
+          <span class="edu-item">채널 기획</span>
+          <span class="edu-item">썸네일 제작</span>
+          <span class="edu-item">쇼츠 전략</span>
+          <span class="edu-item">알고리즘 이해</span>
+          <span class="edu-item">수익화 기초</span>
+          <span class="edu-item">성장 전략</span>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">📱</div>
+        <h3>인스타그램 운영 교육</h3>
+        <div class="edu-tagline">팔로워 증가와 브랜딩을 위한 실전 교육</div>
+        <p>인스타그램을 활용한 개인 브랜딩과 비즈니스 마케팅 전략을 교육합니다. 릴스, 카드뉴스, 스토리까지 전방위 콘텐츠를 실습합니다.</p>
+        <div class="edu-items">
+          <span class="edu-item">계정 브랜딩</span>
+          <span class="edu-item">릴스 제작</span>
+          <span class="edu-item">카드뉴스</span>
+          <span class="edu-item">해시태그 전략</span>
+          <span class="edu-item">스토리 운영</span>
+          <span class="edu-item">마케팅 기초</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="container">
-    <span class="section-label aos">치료 공간</span>
-    <h2 class="section-title aos">쾌적하고 전문적인 치료 환경</h2>
-    <div class="divider aos"></div>
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item aos">
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-          <span>메인 치료실</span>
-        </div>
-        <div class="gallery-overlay">📷 클릭하여 이미지 업로드</div>
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-label">FEATURES</div>
+    <h2 class="section-title">강의 특징</h2>
+    <p class="section-sub">수강생이 실제 결과물을 완성할 수 있도록 교육합니다</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🛠️</div>
+        <h3>실습 중심 교육</h3>
+        <p>이론보다 실제 제작에 집중합니다. 교육 과정에서 직접 홈페이지를 만들고, 영상을 제작하며, SNS 콘텐츠를 운영해볼 수 있습니다.</p>
       </div>
-      <div class="gallery-item aos aos-delay-1">
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-          <span>체형 분석 공간</span>
-        </div>
-        <div class="gallery-overlay">📷 클릭하여 이미지 업로드</div>
+      <div class="feature-card">
+        <div class="feature-icon">🌱</div>
+        <h3>초보자도 쉽게</h3>
+        <p>비전공자와 디지털 초보자도 이해할 수 있도록 쉽고 체계적으로 설명합니다. 누구든 시작할 수 있습니다.</p>
       </div>
-      <div class="gallery-item aos aos-delay-2">
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-          <span>운동 공간</span>
-        </div>
-        <div class="gallery-overlay">📷 클릭하여 이미지 업로드</div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>최신 AI 활용</h3>
+        <p>생성형 AI를 적극 활용하여 업무 효율을 높이고 생산성을 향상시키는 방법을 교육합니다.</p>
       </div>
-      <div class="gallery-item aos aos-delay-3">
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-          <span>대기실</span>
-        </div>
-        <div class="gallery-overlay">📷 클릭하여 이미지 업로드</div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>결과물 중심</h3>
+        <p>강의가 끝나면 실제 사용할 수 있는 홈페이지, 영상 콘텐츠, 유튜브 채널, 인스타그램 계정을 보유하게 됩니다.</p>
       </div>
-      <div class="gallery-item aos aos-delay-4">
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-          <span>장비 소개</span>
-        </div>
-        <div class="gallery-overlay">📷 클릭하여 이미지 업로드</div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>맞춤형 교육</h3>
+        <p>기관, 기업, 학교, 공공기관, 평생교육원 등 대상에 맞춘 교육이 가능합니다. 니즈에 따라 커리큘럼을 조정합니다.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>즉시 활용 가능</h3>
+        <p>배운 내용을 바로 실무에 적용할 수 있도록 실전 위주로 구성합니다. 강의 당일부터 사용할 수 있는 스킬을 제공합니다.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BOOKING -->
-<section id="booking">
-  <div class="container">
-    <span class="section-label aos" style="color:var(--gold-light);">예약 및 문의</span>
-    <h2 class="section-title aos">지금 바로 시작하세요</h2>
-    <p class="section-sub aos" id="bookingDesc">
-      전화, 카카오톡, 네이버 예약 중 편리한 방법으로<br>언제든지 문의해 주세요.
-    </p>
-    <div class="booking-buttons aos">
-      <a href="tel:010-0000-0000" class="btn-phone" id="phoneBtn">📞 전화 상담</a>
-      <a href="https://open.kakao.com/o/your-id" class="btn-kakao" target="_blank">💬 카카오톡 상담</a>
-      <a href="https://booking.naver.com/booking/13/bizes/your-id" class="btn-naver" target="_blank">🟢 네이버 예약</a>
-    </div>
-    <div class="booking-info aos">
-      <div class="booking-info-item">
-        <div class="info-icon">📅</div>
-        <div class="info-title">진료 시간</div>
-        <div class="info-content" id="hoursInfo">평일 09:00 – 20:00<br>토요일 09:00 – 15:00<br>일·공휴일 휴무</div>
-      </div>
-      <div class="booking-info-item">
-        <div class="info-icon">📍</div>
-        <div class="info-title">위치</div>
-        <div class="info-content" id="addressInfo">서울시 강남구<br>테헤란로 123, 5층<br>(역삼역 3번 출구)</div>
-      </div>
-      <div class="booking-info-item">
-        <div class="info-icon">🚗</div>
-        <div class="info-title">주차 안내</div>
-        <div class="info-content" id="parkingInfo">건물 지하 주차장 이용 가능<br>치료 시 1시간 무료<br>(주차권 제공)</div>
-      </div>
+<!-- RECOMMEND -->
+<section class="recommend-section">
+  <div class="section-inner">
+    <div class="section-label">WHO IS THIS FOR</div>
+    <h2 class="section-title">이런 분들에게 추천합니다</h2>
+    <p class="section-sub">AI 디지털 역량이 필요한 모든 분들을 위한 교육입니다</p>
+    <div class="recommend-list">
+      <div class="recommend-item"><span class="check-icon">✓</span>AI를 업무에 활용하고 싶은 분</div>
+      <div class="recommend-item"><span class="check-icon">✓</span>홈페이지를 직접 만들고 싶은 분</div>
+      <div class="recommend-item"><span class="check-icon">✓</span>영상 제작 능력을 키우고 싶은 분</div>
+      <div class="recommend-item"><span class="check-icon">✓</span>유튜브 채널을 운영하고 싶은 분</div>
+      <div class="recommend-item"><span class="check-icon">✓</span>인스타그램 브랜딩을 시작하고 싶은 분</div>
+      <div class="recommend-item"><span class="check-icon">✓</span>디지털 마케팅 역량을 높이고 싶은 분</div>
+      <div class="recommend-item"><span class="check-icon">✓</span>개인 브랜드를 구축하고 싶은 분</div>
+      <div class="recommend-item"><span class="check-icon">✓</span>생성형 AI 실무 능력을 배우고 싶은 분</div>
     </div>
   </div>
 </section>
 
-<!-- LOCATION -->
-<section id="location">
-  <div class="container">
-    <span class="section-label aos">오시는 길</span>
-    <h2 class="section-title aos">찾아오시기 쉽도록</h2>
-    <div class="divider aos"></div>
-    <div class="location-grid">
-      <div class="map-wrap aos">
-        <div class="map-placeholder">
-          <div style="font-size:48px;margin-bottom:16px;">🗺️</div>
-          <h3 id="mapAddress">서울시 강남구 테헤란로 123, 5층</h3>
-          <p style="margin-top:12px;">
-            <a href="https://map.naver.com" target="_blank" style="color:var(--navy);font-weight:600;text-decoration:none;border:1.5px solid var(--navy);padding:8px 20px;border-radius:50px;font-size:13px;display:inline-block;margin-top:12px;">네이버 지도 보기 →</a>
-          </p>
-        </div>
-      </div>
-      <div class="location-info">
-        <div class="location-item aos">
-          <h4>주소</h4>
-          <p id="fullAddress">서울시 강남구 테헤란로 123, 5층<br>역삼역 3번 출구 도보 3분</p>
-        </div>
-        <div class="location-item aos">
-          <h4>운영 시간</h4>
-          <div class="hours-grid" id="hoursGrid">
-            <div class="hour-row"><span class="hour-day">월 – 금</span><span class="hour-time">09:00 – 20:00</span></div>
-            <div class="hour-row"><span class="hour-day">토요일</span><span class="hour-time">09:00 – 15:00</span></div>
-            <div class="hour-row"><span class="hour-day">일·공휴일</span><span class="hour-time">휴무</span></div>
-          </div>
-        </div>
-        <div class="location-item aos">
-          <h4>교통 안내</h4>
-          <p id="transportInfo">🚇 지하철: 역삼역 3번 출구 도보 3분<br>🚌 버스: OO정류장 하차 후 도보 2분<br>🚗 자가용: 건물 지하주차장 이용</p>
-        </div>
-      </div>
+<!-- TARGETS -->
+<section class="targets-section" id="targets">
+  <div class="section-inner">
+    <div class="section-label">CLIENTS</div>
+    <h2 class="section-title">출강 대상</h2>
+    <p class="section-sub">다양한 기관과 기업에서 출강 강의가 가능합니다</p>
+    <div class="targets-grid">
+      <div class="target-item"><span class="target-dot"></span>공공기관</div>
+      <div class="target-item"><span class="target-dot"></span>지방자치단체</div>
+      <div class="target-item"><span class="target-dot"></span>대학교</div>
+      <div class="target-item"><span class="target-dot"></span>평생교육원</div>
+      <div class="target-item"><span class="target-dot"></span>기업 임직원</div>
+      <div class="target-item"><span class="target-dot"></span>소상공인</div>
+      <div class="target-item"><span class="target-dot"></span>창업 예정자</div>
+      <div class="target-item"><span class="target-dot"></span>1인 기업</div>
+      <div class="target-item"><span class="target-dot"></span>강사</div>
+      <div class="target-item"><span class="target-dot"></span>프리랜서</div>
+      <div class="target-item"><span class="target-dot"></span>청년 창업가</div>
+      <div class="target-item"><span class="target-dot"></span>시니어 디지털 과정</div>
     </div>
   </div>
 </section>
 
-<!-- BLOG -->
-<section id="blog">
-  <div class="container">
-    <span class="section-label aos">건강 정보</span>
-    <h2 class="section-title aos">전문가가 전하는 건강 이야기</h2>
-    <div class="divider aos"></div>
-    <div class="blog-grid" id="blogGrid">
-      <div class="blog-card aos">
-        <div class="blog-img">
-          <div style="text-align:center;padding:20px;">
-            <div style="font-size:36px;">📰</div>
-            <p style="font-size:12px;margin-top:8px;">블로그 이미지</p>
-          </div>
-        </div>
-        <div class="blog-content">
-          <span class="blog-tag">자세 교정</span>
-          <div class="blog-title">스마트폰이 목을 망치는 이유 – 거북목 예방법</div>
-          <div class="blog-excerpt">하루 평균 4시간 이상 스마트폰을 사용하는 현대인에게 거북목은 피할 수 없는 현실이 되었습니다. 올바른 자세와 스트레칭으로 예방하는 방법을 소개합니다.</div>
-          <div class="blog-meta">🗓 2025. 03. 15 &nbsp;·&nbsp; 📖 3분 읽기</div>
-        </div>
-      </div>
-      <div class="blog-card aos aos-delay-1">
-        <div class="blog-img">
-          <div style="text-align:center;padding:20px;">
-            <div style="font-size:36px;">📰</div>
-            <p style="font-size:12px;margin-top:8px;">블로그 이미지</p>
-          </div>
-        </div>
-        <div class="blog-content">
-          <span class="blog-tag">허리 건강</span>
-          <div class="blog-title">의자에 앉는 방법이 허리 통증을 만든다</div>
-          <div class="blog-excerpt">잘못된 앉는 자세는 허리 디스크의 압력을 서 있을 때보다 40% 이상 높입니다. 올바른 착석 자세와 주기적인 스트레칭으로 허리를 지키세요.</div>
-          <div class="blog-meta">🗓 2025. 02. 28 &nbsp;·&nbsp; 📖 4분 읽기</div>
-        </div>
-      </div>
-      <div class="blog-card aos aos-delay-2">
-        <div class="blog-img">
-          <div style="text-align:center;padding:20px;">
-            <div style="font-size:36px;">📰</div>
-            <p style="font-size:12px;margin-top:8px;">블로그 이미지</p>
-          </div>
-        </div>
-        <div class="blog-content">
-          <span class="blog-tag">재활 운동</span>
-          <div class="blog-title">운동 부상 후 복귀, 서두르면 더 위험합니다</div>
-          <div class="blog-excerpt">부상 후 빠른 복귀에 대한 욕심은 재부상의 가장 큰 원인입니다. 단계별 재활 과정과 안전한 복귀 기준에 대해 전문가 시각으로 안내합니다.</div>
-          <div class="blog-meta">🗓 2025. 02. 10 &nbsp;·&nbsp; 📖 5분 읽기</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2>지금 바로 강의를 문의하세요</h2>
+  <p>대상과 목적에 맞는 맞춤형 커리큘럼을 제안드립니다</p>
+  <a href="mailto:contact@example.com" class="btn-white">강의 문의하기 →</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-logo">이도현<span> 도수치료</span></div>
-        <p class="footer-desc">체계적인 평가와 맞춤형 치료로<br>여러분의 건강한 일상을 응원합니다.</p>
-      </div>
-      <div class="footer-col">
-        <h4>빠른 이동</h4>
-        <ul>
-          <li><a href="#about">치료사 소개</a></li>
-          <li><a href="#symptoms">치료 증상</a></li>
-          <li><a href="#process">치료 과정</a></li>
-          <li><a href="#reviews">후기</a></li>
-          <li><a href="#booking">예약하기</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>연락처</h4>
-        <ul>
-          <li><a href="tel:010-0000-0000" id="footerPhone">📞 010-0000-0000</a></li>
-          <li><a href="https://open.kakao.com" target="_blank">💬 카카오톡 상담</a></li>
-          <li><a href="#location">📍 오시는 길</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2025 이도현 도수치료. All rights reserved.</span>
-      <span>서울시 강남구 테헤란로 123</span>
-    </div>
-  </div>
+  <p><strong>이시헌 강사</strong> | AI 기술 & 디지털 콘텐츠 제작 전문 강사</p>
+  <p style="margin-top:8px;"><span>#AI교육</span> <span>#홈페이지제작</span> <span>#영상제작</span> <span>#유튜브운영</span> <span>#인스타그램마케팅</span></p>
+  <p style="margin-top:16px;">© 2025 이시헌 강사. All rights reserved.</p>
 </footer>
 
-<!-- ADMIN TRIGGER -->
-<div style="background:#070e1c; text-align:center; padding:8px 0 20px;">
-  <span onclick="openAdmin()" title="관리자" style="font-size:18px; opacity:0.25; cursor:pointer; user-select:none; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='0.25'">🔒</span>
-</div>
-
-<!-- ADMIN OVERLAY -->
-<div class="admin-overlay" id="adminOverlay">
-  <div class="admin-panel">
-    <div class="admin-header">
-      <h2>관리자 <span>모드</span></h2>
-      <button class="admin-close" onclick="closeAdmin()">✕</button>
-    </div>
-
-    <!-- LOGIN SCREEN -->
-    <div class="admin-login" id="adminLogin">
-      <div style="font-size:48px;margin-bottom:16px;">🔐</div>
-      <h3>관리자 인증</h3>
-      <p>비밀번호를 입력해 주세요</p>
-      <input type="password" class="admin-input" id="adminPwInput" placeholder="••••••" onkeydown="if(event.key==='Enter')checkPw()">
-      <br>
-      <button class="admin-input-btn" onclick="checkPw()">확인</button>
-      <p class="admin-error" id="pwError">❌ 비밀번호가 틀렸습니다</p>
-    </div>
-
-    <!-- ADMIN CONTENT -->
-    <div id="adminContent" style="display:none; flex-direction:column; flex:1; overflow:hidden;">
-      <div class="admin-tabs">
-        <button class="admin-tab active" onclick="switchTab('text')">📝 텍스트 수정</button>
-        <button class="admin-tab" onclick="switchTab('images')">🖼️ 이미지 관리</button>
-        <button class="admin-tab" onclick="switchTab('gallery')">🏠 공간 갤러리</button>
-        <button class="admin-tab" onclick="switchTab('blog')">📰 블로그 관리</button>
-      </div>
-      <div class="admin-body">
-
-        <!-- TEXT TAB -->
-        <div class="admin-content active" id="tab-text">
-          <div class="admin-section">
-            <h4>🏠 히어로 섹션</h4>
-            <div class="admin-row">
-              <label>뱃지 문구</label>
-              <input class="admin-field" id="f-heroBadge" type="text" placeholder="프리미엄 도수치료 전문">
-            </div>
-            <div class="admin-row">
-              <label>메인 타이틀</label>
-              <textarea class="admin-field" id="f-heroTitle" rows="3" placeholder="몸의 균형을 되찾는 정밀한 손길"></textarea>
-            </div>
-            <div class="admin-row">
-              <label>설명 문구</label>
-              <textarea class="admin-field" id="f-heroDesc"></textarea>
-            </div>
-            <div class="admin-row">
-              <label>경력 연수 (예: 8+)</label>
-              <input class="admin-field" id="f-stat1" type="text">
-            </div>
-            <div class="admin-row">
-              <label>누적 환자 (예: 3,000+)</label>
-              <input class="admin-field" id="f-stat2" type="text">
-            </div>
-            <div class="admin-row">
-              <label>만족도 (예: 98%)</label>
-              <input class="admin-field" id="f-stat3" type="text">
-            </div>
-          </div>
-          <div class="admin-section">
-            <h4>👨‍⚕️ 소개 섹션</h4>
-            <div class="admin-row">
-              <label>소개 문구</label>
-              <textarea class="admin-field" id="f-aboutDesc" rows="4"></textarea>
-            </div>
-            <div class="admin-row">
-              <label>치료 철학 (인용문)</label>
-              <textarea class="admin-field" id="f-philosophyText" rows="3"></textarea>
-            </div>
-          </div>
-          <div class="admin-section">
-            <h4>📅 예약 섹션</h4>
-            <div class="admin-row">
-              <label>전화번호</label>
-              <input class="admin-field" id="f-phone" type="text" placeholder="010-0000-0000">
-            </div>
-            <div class="admin-row">
-              <label>운영시간 (예약 섹션)</label>
-              <textarea class="admin-field" id="f-hoursInfo" rows="3"></textarea>
-            </div>
-            <div class="admin-row">
-              <label>주소 (예약 섹션)</label>
-              <textarea class="admin-field" id="f-addressInfo" rows="2"></textarea>
-            </div>
-            <div class="admin-row">
-              <label>주차 안내</label>
-              <textarea class="admin-field" id="f-parkingInfo" rows="3"></textarea>
-            </div>
-          </div>
-          <div class="admin-section">
-            <h4>📍 위치 안내</h4>
-            <div class="admin-row">
-              <label>지도 주소 표시</label>
-              <input class="admin-field" id="f-mapAddress" type="text">
-            </div>
-            <div class="admin-row">
-              <label>전체 주소</label>
-              <textarea class="admin-field" id="f-fullAddress" rows="2"></textarea>
-            </div>
-            <div class="admin-row">
-              <label>교통 안내</label>
-              <textarea class="admin-field" id="f-transportInfo" rows="3"></textarea>
-            </div>
-          </div>
-          <button class="save-btn" onclick="saveText()">💾 저장하기</button>
-          <span class="save-success" id="textSaveMsg">✅ 저장되었습니다!</span>
-        </div>
-
-        <!-- IMAGES TAB -->
-        <div class="admin-content" id="tab-images">
-          <div class="admin-section">
-            <h4>🖼️ 히어로 이미지</h4>
-            <div class="upload-zone" onclick="document.getElementById('heroImgInput').click()">
-              <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
-              <p>클릭하여 히어로 이미지 업로드</p>
-              <input type="file" id="heroImgInput" accept="image/*" onchange="uploadImage(this,'hero')">
-            </div>
-            <div id="heroImgPreview" style="margin-top:12px;display:none;">
-              <img id="heroImgPreviewImg" style="width:120px;height:120px;object-fit:cover;border-radius:12px;border:2px solid var(--gold);" alt="">
-            </div>
-          </div>
-          <div class="admin-section">
-            <h4>👨‍⚕️ 치료사 프로필 이미지</h4>
-            <div class="upload-zone" onclick="document.getElementById('aboutImgInput').click()">
-              <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
-              <p>클릭하여 프로필 사진 업로드</p>
-              <input type="file" id="aboutImgInput" accept="image/*" onchange="uploadImage(this,'about')">
-            </div>
-            <div id="aboutImgPreview" style="margin-top:12px;display:none;">
-              <img id="aboutImgPreviewImg" style="width:120px;height:160px;object-fit:cover;border-radius:12px;border:2px solid var(--gold);" alt="">
-            </div>
-          </div>
-          <button class="save-btn" onclick="saveImages()">💾 이미지 저장</button>
-          <span class="save-success" id="imgSaveMsg">✅ 저장되었습니다!</span>
-        </div>
-
-        <!-- GALLERY TAB -->
-        <div class="admin-content" id="tab-gallery">
-          <div class="admin-section">
-            <h4>🏠 치료 공간 갤러리 이미지 관리</h4>
-            <p style="font-size:13px;color:var(--gray);margin-bottom:20px;">이미지를 추가하면 공간 소개 섹션에 자동으로 표시됩니다.</p>
-            <div class="upload-zone" onclick="document.getElementById('galleryImgInput').click()">
-              <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
-              <p>클릭하여 갤러리 이미지 추가 (여러 장 선택 가능)</p>
-              <input type="file" id="galleryImgInput" accept="image/*" multiple onchange="uploadGallery(this)">
-            </div>
-            <div class="gallery-admin-grid" id="galleryAdminGrid" style="margin-top:20px;"></div>
-          </div>
-          <button class="save-btn" onclick="saveGallery()">💾 갤러리 저장</button>
-          <span class="save-success" id="gallerySaveMsg">✅ 저장되었습니다!</span>
-        </div>
-
-        <!-- BLOG TAB -->
-        <div class="admin-content" id="tab-blog">
-          <div class="admin-section">
-            <h4>📰 블로그 포스트 관리</h4>
-            <div class="add-blog-form">
-              <h5>새 포스트 추가</h5>
-              <div class="admin-row">
-                <label>카테고리 태그</label>
-                <input class="admin-field" id="newBlogTag" type="text" placeholder="예: 자세 교정">
-              </div>
-              <div class="admin-row">
-                <label>제목</label>
-                <input class="admin-field" id="newBlogTitle" type="text" placeholder="블로그 포스트 제목">
-              </div>
-              <div class="admin-row">
-                <label>내용 요약</label>
-                <textarea class="admin-field" id="newBlogExcerpt" rows="3" placeholder="블로그 내용 미리보기..."></textarea>
-              </div>
-              <div class="admin-row">
-                <label>이미지</label>
-                <div class="upload-zone" onclick="document.getElementById('blogImgInput').click()" style="padding:20px;">
-                  <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:var(--gray);"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
-                  <p style="font-size:13px;">블로그 이미지 업로드</p>
-                  <input type="file" id="blogImgInput" accept="image/*" onchange="previewBlogImg(this)">
-                </div>
-                <div id="blogImgPreview" style="margin-top:8px;display:none;">
-                  <img id="blogImgPreviewImg" style="height:80px;border-radius:8px;object-fit:cover;" alt="">
-                </div>
-              </div>
-              <div class="admin-row">
-                <label>읽기 시간 (예: 3분 읽기)</label>
-                <input class="admin-field" id="newBlogReadTime" type="text" placeholder="3분 읽기">
-              </div>
-              <button class="save-btn" onclick="addBlogPost()" style="background:var(--gold);color:var(--navy);">+ 포스트 추가</button>
-            </div>
-            <div class="blog-admin-list" id="blogAdminList"></div>
-          </div>
-          <button class="save-btn" onclick="saveBlog()">💾 블로그 저장</button>
-          <span class="save-success" id="blogSaveMsg">✅ 저장되었습니다!</span>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-// ===== STATE =====
-let state = {
-  heroImg: null,
-  aboutImg: null,
-  galleryImages: [],
-  blogPosts: [],
-  text: {}
-};
+  /* ── 프로필 사진 (메인) ── */
+  function changeAvatar(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      applyPhoto(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  }
 
-const STORAGE_KEY = 'leedohyun_admin_data';
+  function applyPhoto(src) {
+    const img = document.getElementById('avatarImg');
+    const placeholder = document.getElementById('avatarPlaceholder');
+    const overlay = document.getElementById('photoOverlay');
+    const adminPreview = document.getElementById('adminPhotoPreview');
+    const adminEmpty = document.getElementById('adminPhotoEmpty');
+    img.src = src;
+    img.style.display = 'block';
+    placeholder.style.display = 'none';
+    overlay.style.display = 'flex';
+    adminPreview.src = src;
+    adminPreview.style.display = 'block';
+    adminEmpty.style.display = 'none';
+  }
 
-// ===== LOAD FROM STORAGE =====
-function loadFromStorage() {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      const data = JSON.parse(saved);
-      state = { ...state, ...data };
-      applyAll();
+  /* ── 어드민 비번 ── */
+  let adminUnlocked = false;
+
+  function toggleAdmin() {
+    if (!adminUnlocked) {
+      openPasswordModal();
+    } else {
+      const overlay = document.getElementById('adminOverlay');
+      overlay.classList.toggle('open');
+      if (overlay.classList.contains('open')) syncAdminFields();
     }
-  } catch(e) { console.warn('Storage load error', e); }
-}
-
-function applyAll() {
-  // Text
-  const t = state.text;
-  if (t.heroBadge) el('heroBadge').textContent = t.heroBadge;
-  if (t.heroTitle) el('heroTitle').innerHTML = t.heroTitle;
-  if (t.heroDesc) el('heroDesc').innerHTML = t.heroDesc;
-  if (t.stat1) el('stat1').textContent = t.stat1;
-  if (t.stat2) el('stat2').textContent = t.stat2;
-  if (t.stat3) el('stat3').textContent = t.stat3;
-  if (t.aboutDesc) el('aboutDesc').textContent = t.aboutDesc;
-  if (t.philosophyText) el('philosophyText').textContent = t.philosophyText;
-  if (t.hoursInfo) el('hoursInfo').innerHTML = t.hoursInfo;
-  if (t.addressInfo) el('addressInfo').innerHTML = t.addressInfo;
-  if (t.parkingInfo) el('parkingInfo').innerHTML = t.parkingInfo;
-  if (t.mapAddress) el('mapAddress').textContent = t.mapAddress;
-  if (t.fullAddress) el('fullAddress').innerHTML = t.fullAddress;
-  if (t.transportInfo) el('transportInfo').innerHTML = t.transportInfo;
-  if (t.phone) {
-    const pb = el('phoneBtn');
-    if (pb) pb.href = 'tel:' + t.phone.replace(/-/g,'');
-    el('footerPhone').textContent = '📞 ' + t.phone;
   }
 
-  // Images
-  if (state.heroImg) applyHeroImg(state.heroImg);
-  if (state.aboutImg) applyAboutImg(state.aboutImg);
-
-  // Gallery
-  renderGallery();
-  renderGalleryAdmin();
-
-  // Blog
-  renderBlog();
-  renderBlogAdmin();
-}
-
-function saveToStorage() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch(e) {
-    alert('⚠️ 저장 공간이 부족합니다. 일부 이미지를 삭제해보세요.');
+  function openPasswordModal() {
+    document.getElementById('pwModal').style.display = 'flex';
+    document.getElementById('pwInput').value = '';
+    document.getElementById('pwError').style.display = 'none';
+    setTimeout(function(){ document.getElementById('pwInput').focus(); }, 80);
   }
-}
 
-// ===== HELPERS =====
-function el(id) { return document.getElementById(id); }
-function showSuccess(id) {
-  const e = el(id);
-  if (!e) return;
-  e.style.opacity = '1';
-  setTimeout(() => e.style.opacity = '0', 3000);
-}
-
-// ===== NAV =====
-window.addEventListener('scroll', () => {
-  el('navbar').classList.toggle('scrolled', window.scrollY > 50);
-});
-
-function toggleMobile() {
-  el('mobileMenu').classList.toggle('open');
-}
-function closeMobile() {
-  el('mobileMenu').classList.remove('open');
-}
-
-// ===== AOS =====
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.aos').forEach(e => observer.observe(e));
-
-// ===== ADMIN =====
-function openAdmin() {
-  el('adminOverlay').classList.add('open');
-  el('adminLogin').style.display = 'block';
-  el('adminContent').style.display = 'none';
-  el('adminPwInput').value = '';
-  el('pwError').style.display = 'none';
-  loadFieldsFromState();
-}
-function closeAdmin() {
-  el('adminOverlay').classList.remove('open');
-}
-el('adminOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeAdmin();
-});
-
-function checkPw() {
-  const pw = el('adminPwInput').value;
-  if (pw === '*1234') {
-    el('adminLogin').style.display = 'none';
-    el('adminContent').style.display = 'flex';
-  } else {
-    el('pwError').style.display = 'block';
-    el('adminPwInput').value = '';
+  function closePwModal() {
+    document.getElementById('pwModal').style.display = 'none';
   }
-}
 
-function switchTab(name) {
-  document.querySelectorAll('.admin-tab').forEach((t,i) => {
-    const tabs = ['text','images','gallery','blog'];
-    t.classList.toggle('active', tabs[i] === name);
-  });
-  document.querySelectorAll('.admin-content').forEach(c => c.classList.remove('active'));
-  el('tab-' + name).classList.add('active');
-}
-
-function loadFieldsFromState() {
-  const t = state.text;
-  const fields = [
-    'heroBadge','heroTitle','heroDesc','stat1','stat2','stat3',
-    'aboutDesc','philosophyText','hoursInfo','addressInfo','parkingInfo',
-    'mapAddress','fullAddress','transportInfo','phone'
-  ];
-  fields.forEach(f => {
-    const elem = el('f-' + f);
-    if (elem && t[f]) elem.value = t[f];
-    else if (elem) {
-      // Load from page defaults
-      const src = el(f);
-      if (src) elem.value = src.innerHTML || src.textContent || '';
+  function submitPassword() {
+    var val = document.getElementById('pwInput').value;
+    if (val === '1234') {
+      adminUnlocked = true;
+      closePwModal();
+      var overlay = document.getElementById('adminOverlay');
+      overlay.classList.add('open');
+      syncAdminFields();
+    } else {
+      var err = document.getElementById('pwError');
+      err.style.display = 'block';
+      document.getElementById('pwInput').value = '';
+      document.getElementById('pwInput').focus();
+      setTimeout(function(){ err.style.display = 'none'; }, 2200);
     }
+  }
+
+  function closeAdminOutside(e) {
+    if (e.target === document.getElementById('adminOverlay')) {
+      document.getElementById('adminOverlay').classList.remove('open');
+      adminUnlocked = false;
+    }
+  }
+
+  function closeAdmin() {
+    document.getElementById('adminOverlay').classList.remove('open');
+    adminUnlocked = false;
+  }
+
+  /* 현재 페이지 값 → 어드민 필드 동기화 */
+  function syncAdminFields() {
+    setVal('adminName',     document.querySelector('.profile-name')?.innerText);
+    setVal('adminTitle',    document.querySelector('.profile-title')?.innerText);
+    setVal('adminBadge',    document.querySelector('.hero-badge')?.innerText.trim());
+    setVal('adminHeadline', document.querySelector('.hero h1')?.innerText);
+    setVal('adminDesc',     document.querySelector('.hero-desc')?.innerText);
+    setVal('adminStat1',    document.querySelectorAll('.stat-num')[0]?.innerText);
+    setVal('adminStat2',    document.querySelectorAll('.stat-num')[1]?.innerText);
+    setVal('adminStat3',    document.querySelectorAll('.stat-num')[2]?.innerText);
+    setVal('adminCtaTitle', document.querySelector('.cta-section h2')?.innerText);
+    setVal('adminCtaDesc',  document.querySelector('.cta-section p')?.innerText);
+    const emailLink = document.querySelector('.btn-white');
+    if (emailLink) setVal('adminEmail', emailLink.href.replace('mailto:', ''));
+
+    // 사진 동기화
+    const img = document.getElementById('avatarImg');
+    if (img && img.style.display !== 'none' && img.src) {
+      document.getElementById('adminPhotoPreview').src = img.src;
+      document.getElementById('adminPhotoPreview').style.display = 'block';
+      document.getElementById('adminPhotoEmpty').style.display = 'none';
+    }
+  }
+
+  function setVal(id, val) {
+    const el = document.getElementById(id);
+    if (el && val) el.value = val;
+  }
+
+  /* ── 라이브 업데이트 ── */
+  function liveUpdate(inputId, targetClass) {
+    const val = document.getElementById(inputId).value;
+    document.querySelectorAll('.' + targetClass).forEach(el => el.innerText = val);
+  }
+  function liveUpdateSingle(inputId, selector) {
+    const val = document.getElementById(inputId).value;
+    const el = document.querySelector(selector);
+    if (el) el.innerText = val;
+  }
+  function liveUpdateHTML(inputId, selector) {
+    const val = document.getElementById(inputId).value;
+    const el = document.querySelector(selector);
+    if (el) el.innerText = val;
+  }
+  function liveUpdateNth(inputId, selector, index) {
+    const val = document.getElementById(inputId).value;
+    const els = document.querySelectorAll(selector);
+    if (els[index]) els[index].innerText = val;
+  }
+  function updateEmail() {
+    const val = document.getElementById('adminEmail').value;
+    const btn = document.querySelector('.btn-white');
+    if (btn) btn.href = 'mailto:' + val;
+  }
+
+  /* ── 어드민 사진 업로드 ── */
+  function adminUploadPhoto(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) { applyPhoto(e.target.result); };
+    reader.readAsDataURL(file);
+  }
+
+  function adminRemovePhoto() {
+    const img = document.getElementById('avatarImg');
+    const placeholder = document.getElementById('avatarPlaceholder');
+    const overlay = document.getElementById('photoOverlay');
+    const adminPreview = document.getElementById('adminPhotoPreview');
+    const adminEmpty = document.getElementById('adminPhotoEmpty');
+    img.src = '';
+    img.style.display = 'none';
+    placeholder.style.display = 'flex';
+    overlay.style.display = 'none';
+    adminPreview.src = '';
+    adminPreview.style.display = 'none';
+    adminEmpty.style.display = 'flex';
+  }
+
+  /* ── 클라우드 저장 (모든 기기 공유) ── */
+  const STORAGE_KEY = 'isheon_site_data';
+
+  async function saveAll() {
+    const msg = document.getElementById('adminSaveMsg');
+    msg.textContent = '⏳ 저장 중...';
+
+    const photoSrc = document.getElementById('adminPhotoPreview').src || '';
+    // 이미지는 별도 키로 저장 (5MB 제한 고려)
+    const textData = {
+      name:     document.getElementById('adminName').value,
+      title:    document.getElementById('adminTitle').value,
+      badge:    document.getElementById('adminBadge').value,
+      headline: document.getElementById('adminHeadline').value,
+      desc:     document.getElementById('adminDesc').value,
+      stat1:    document.getElementById('adminStat1').value,
+      stat2:    document.getElementById('adminStat2').value,
+      stat3:    document.getElementById('adminStat3').value,
+      ctaTitle: document.getElementById('adminCtaTitle').value,
+      ctaDesc:  document.getElementById('adminCtaDesc').value,
+      email:    document.getElementById('adminEmail').value,
+    };
+
+    try {
+      // 텍스트 데이터 저장
+      await window.storage.set(STORAGE_KEY, JSON.stringify(textData), true);
+      // 이미지 별도 저장
+      if (photoSrc && photoSrc.length > 10 && photoSrc.startsWith('data:')) {
+        await window.storage.set(STORAGE_KEY + '_photo', photoSrc, true);
+      } else if (!photoSrc || photoSrc.length < 10) {
+        try { await window.storage.delete(STORAGE_KEY + '_photo', true); } catch(e) {}
+      }
+      msg.textContent = '✅ 저장 완료! 모든 기기에 반영됩니다';
+      setTimeout(() => msg.textContent = '', 3000);
+    } catch(e) {
+      // 클라우드 실패 시 localStorage 폴백
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({...textData, photo: photoSrc}));
+        msg.textContent = '✅ 저장 완료 (로컬)';
+      } catch(e2) {}
+      setTimeout(() => msg.textContent = '', 2500);
+    }
+  }
+
+  /* ── 페이지 로드 시 클라우드에서 복원 ── */
+  async function loadSiteData() {
+    let d = null;
+    let photoSrc = '';
+
+    try {
+      // 클라우드에서 불러오기
+      const result = await window.storage.get(STORAGE_KEY, true);
+      if (result && result.value) d = JSON.parse(result.value);
+
+      const photoResult = await window.storage.get(STORAGE_KEY + '_photo', true);
+      if (photoResult && photoResult.value) photoSrc = photoResult.value;
+    } catch(e) {
+      // 클라우드 실패 시 localStorage 폴백
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          d = parsed;
+          photoSrc = parsed.photo || '';
+        }
+      } catch(e2) {}
+    }
+
+    if (!d) return;
+
+    if (d.name)     document.querySelectorAll('.profile-name').forEach(e => e.innerText = d.name);
+    if (d.title)    document.querySelectorAll('.profile-title').forEach(e => e.innerText = d.title);
+    if (d.badge)    { const b = document.querySelector('.hero-badge'); if(b) b.innerText = d.badge; }
+    if (d.headline) { const h = document.querySelector('.hero h1'); if(h) h.innerText = d.headline; }
+    if (d.desc)     { const p = document.querySelector('.hero-desc'); if(p) p.innerText = d.desc; }
+    const nums = document.querySelectorAll('.stat-num');
+    if (d.stat1 && nums[0]) nums[0].innerText = d.stat1;
+    if (d.stat2 && nums[1]) nums[1].innerText = d.stat2;
+    if (d.stat3 && nums[2]) nums[2].innerText = d.stat3;
+    if (d.ctaTitle) { const c = document.querySelector('.cta-section h2'); if(c) c.innerText = d.ctaTitle; }
+    if (d.ctaDesc)  { const c = document.querySelector('.cta-section p');  if(c) c.innerText = d.ctaDesc; }
+    if (d.email)    { const btn = document.querySelector('.btn-white'); if(btn) btn.href = 'mailto:' + d.email; }
+    if (photoSrc && photoSrc.length > 10) applyPhoto(photoSrc);
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    loadSiteData();
   });
-
-  // Image previews
-  if (state.heroImg) {
-    el('heroImgPreview').style.display = 'block';
-    el('heroImgPreviewImg').src = state.heroImg;
-  }
-  if (state.aboutImg) {
-    el('aboutImgPreview').style.display = 'block';
-    el('aboutImgPreviewImg').src = state.aboutImg;
-  }
-
-  renderGalleryAdmin();
-  renderBlogAdmin();
-}
-
-// ===== TEXT SAVE =====
-function saveText() {
-  const fields = [
-    'heroBadge','heroTitle','heroDesc','stat1','stat2','stat3',
-    'aboutDesc','philosophyText','hoursInfo','addressInfo','parkingInfo',
-    'mapAddress','fullAddress','transportInfo','phone'
-  ];
-  fields.forEach(f => {
-    const v = el('f-' + f);
-    if (v) state.text[f] = v.value;
-  });
-  applyAll();
-  saveToStorage();
-  showSuccess('textSaveMsg');
-}
-
-// ===== IMAGE UPLOAD =====
-function fileToBase64(file) {
-  return new Promise((res, rej) => {
-    const r = new FileReader();
-    r.onload = () => res(r.result);
-    r.onerror = rej;
-    r.readAsDataURL(file);
-  });
-}
-
-async function uploadImage(input, type) {
-  const file = input.files[0];
-  if (!file) return;
-  const b64 = await fileToBase64(file);
-  if (type === 'hero') {
-    state.heroImg = b64;
-    el('heroImgPreview').style.display = 'block';
-    el('heroImgPreviewImg').src = b64;
-  } else if (type === 'about') {
-    state.aboutImg = b64;
-    el('aboutImgPreview').style.display = 'block';
-    el('aboutImgPreviewImg').src = b64;
-  }
-}
-
-function applyHeroImg(src) {
-  const wrap = el('heroImgWrap');
-  wrap.innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover;" alt="히어로 이미지">
-    <div class="hero-card">
-      <div class="hero-card-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <div class="hero-card-text">
-        <h4>검증된 전문 치료사</h4>
-        <p>다수의 전문 자격증 보유</p>
-      </div>
-    </div>`;
-}
-
-function applyAboutImg(src) {
-  const ph = el('aboutImgPlaceholder');
-  if (ph) {
-    ph.innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover;" alt="치료사 프로필">`;
-    ph.classList.add('has-image');
-  }
-}
-
-function saveImages() {
-  applyAll();
-  saveToStorage();
-  showSuccess('imgSaveMsg');
-}
-
-// ===== GALLERY =====
-async function uploadGallery(input) {
-  const files = Array.from(input.files);
-  for (const file of files) {
-    const b64 = await fileToBase64(file);
-    state.galleryImages.push({ src: b64, name: file.name });
-  }
-  renderGalleryAdmin();
-}
-
-function removeGalleryItem(idx) {
-  state.galleryImages.splice(idx, 1);
-  renderGalleryAdmin();
-  renderGallery();
-}
-
-function renderGalleryAdmin() {
-  const grid = el('galleryAdminGrid');
-  if (!grid) return;
-  if (state.galleryImages.length === 0) {
-    grid.innerHTML = '<p style="font-size:13px;color:var(--gray);grid-column:span 4;">업로드된 이미지가 없습니다.</p>';
-    return;
-  }
-  grid.innerHTML = state.galleryImages.map((img, i) => `
-    <div class="gallery-admin-item">
-      <img src="${img.src}" alt="">
-      <button class="remove-btn" onclick="removeGalleryItem(${i})">×</button>
-    </div>
-  `).join('');
-}
-
-function renderGallery() {
-  const grid = el('galleryGrid');
-  if (!grid || state.galleryImages.length === 0) return;
-  const labels = ['메인 치료실','체형 분석 공간','운동 공간','대기실','장비 소개','기타'];
-  grid.innerHTML = state.galleryImages.map((img, i) => `
-    <div class="gallery-item aos${i===0?' aos-delay-0':' aos-delay-'+i}${i===0?' style="grid-column:span 2;grid-row:span 2;"':''}">
-      <img src="${img.src}" alt="${labels[i] || '공간 사진'}" style="width:100%;height:100%;object-fit:cover;">
-      <div class="gallery-overlay">🔍 ${labels[i] || '공간 사진'}</div>
-    </div>
-  `).join('');
-}
-
-function saveGallery() {
-  renderGallery();
-  saveToStorage();
-  showSuccess('gallerySaveMsg');
-}
-
-// ===== BLOG =====
-let newBlogImgData = null;
-function previewBlogImg(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const r = new FileReader();
-  r.onload = (e) => {
-    newBlogImgData = e.target.result;
-    el('blogImgPreview').style.display = 'block';
-    el('blogImgPreviewImg').src = newBlogImgData;
-  };
-  r.readAsDataURL(file);
-}
-
-function addBlogPost() {
-  const tag = el('newBlogTag').value.trim();
-  const title = el('newBlogTitle').value.trim();
-  const excerpt = el('newBlogExcerpt').value.trim();
-  const readTime = el('newBlogReadTime').value.trim() || '3분 읽기';
-  if (!title) { alert('제목을 입력해주세요.'); return; }
-  const now = new Date();
-  const dateStr = `${now.getFullYear()}. ${String(now.getMonth()+1).padStart(2,'0')}. ${String(now.getDate()).padStart(2,'0')}`;
-  state.blogPosts.unshift({ tag, title, excerpt, readTime, img: newBlogImgData, date: dateStr });
-  newBlogImgData = null;
-  el('newBlogTag').value = '';
-  el('newBlogTitle').value = '';
-  el('newBlogExcerpt').value = '';
-  el('newBlogReadTime').value = '';
-  el('blogImgPreview').style.display = 'none';
-  el('blogImgInput').value = '';
-  renderBlogAdmin();
-  renderBlog();
-}
-
-function removeBlogPost(idx) {
-  state.blogPosts.splice(idx, 1);
-  renderBlogAdmin();
-  renderBlog();
-}
-
-function renderBlogAdmin() {
-  const list = el('blogAdminList');
-  if (!list) return;
-  if (state.blogPosts.length === 0) {
-    list.innerHTML = '<p style="font-size:13px;color:var(--gray);text-align:center;padding:20px;">등록된 블로그 포스트가 없습니다.</p>';
-    return;
-  }
-  list.innerHTML = state.blogPosts.map((p,i) => `
-    <div class="blog-admin-item">
-      <div>
-        <div class="blog-admin-item-title">${p.tag ? `[${p.tag}] ` : ''}${p.title}</div>
-        <div class="blog-admin-item-date">🗓 ${p.date}</div>
-      </div>
-      <button class="remove-blog-btn" onclick="removeBlogPost(${i})">삭제</button>
-    </div>
-  `).join('');
-}
-
-function renderBlog() {
-  const grid = el('blogGrid');
-  if (!grid || state.blogPosts.length === 0) return;
-  grid.innerHTML = state.blogPosts.map((p,i) => `
-    <div class="blog-card aos${i>0?' aos-delay-'+i:''}">
-      <div class="blog-img">
-        ${p.img ? `<img src="${p.img}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;">` :
-          `<div style="text-align:center;padding:20px;"><div style="font-size:36px;">📰</div><p style="font-size:12px;margin-top:8px;">블로그 이미지</p></div>`}
-      </div>
-      <div class="blog-content">
-        ${p.tag ? `<span class="blog-tag">${p.tag}</span>` : ''}
-        <div class="blog-title">${p.title}</div>
-        <div class="blog-excerpt">${p.excerpt}</div>
-        <div class="blog-meta">🗓 ${p.date} &nbsp;·&nbsp; 📖 ${p.readTime}</div>
-      </div>
-    </div>
-  `).join('');
-  // Re-observe new elements
-  grid.querySelectorAll('.aos:not(.visible)').forEach(e => observer.observe(e));
-}
-
-function saveBlog() {
-  renderBlog();
-  saveToStorage();
-  showSuccess('blogSaveMsg');
-}
-
-// ===== ADMIN IMAGE UPLOAD TRIGGER FROM PAGE =====
-function adminTriggerUpload(type) {
-  // Only works when admin mode might be open; otherwise just shows the overlay info
-}
-
-// ===== INIT =====
-document.addEventListener('DOMContentLoaded', () => {
-  loadFromStorage();
-
-  // Load default field values if not saved
-  const defaults = {
-    heroBadge: '프리미엄 도수치료 전문',
-    heroTitle: '몸의 균형을<br>되찾는<br><em>정밀한 손길</em>',
-    heroDesc: '체계적인 평가와 근거 중심의 맞춤형 도수치료로\n통증의 근본 원인을 해결하고\n건강한 일상을 되찾아 드립니다.',
-    stat1: '8+', stat2: '3,000+', stat3: '98%',
-    phone: '010-0000-0000',
-    hoursInfo: '평일 09:00 – 20:00<br>토요일 09:00 – 15:00<br>일·공휴일 휴무',
-    addressInfo: '서울시 강남구<br>테헤란로 123, 5층<br>(역삼역 3번 출구)',
-    parkingInfo: '건물 지하 주차장 이용 가능<br>치료 시 1시간 무료<br>(주차권 제공)',
-    mapAddress: '서울시 강남구 테헤란로 123, 5층',
-    fullAddress: '서울시 강남구 테헤란로 123, 5층\n역삼역 3번 출구 도보 3분',
-    transportInfo: '🚇 지하철: 역삼역 3번 출구 도보 3분\n🚌 버스: OO정류장 하차 후 도보 2분\n🚗 자가용: 건물 지하주차장 이용',
-  };
-  Object.keys(defaults).forEach(k => {
-    if (!state.text[k]) state.text[k] = defaults[k];
-  });
-});
 </script>
 </body>
 </html>
