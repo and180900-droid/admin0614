@@ -1273,6 +1273,106 @@
   <p style="margin-top:16px;">© 2025 이시헌 강사. All rights reserved.</p>
 </footer>
 
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+  import { getStorage, ref, uploadString, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-storage.js";
+
+  // ── Firebase 설정 ──
+  const firebaseConfig = {
+    apiKey: "AIzaSyACUZo5c-2E78Tohuk-3rKmiaDGi8QbKXg",
+    authDomain: "q4414125.firebaseapp.com",
+    projectId: "q4414125",
+    storageBucket: "q4414125.firebasestorage.app",
+    messagingSenderId: "287445600393",
+    appId: "1:287445600393:web:4f9c93b6d8e5e2cd32de58",
+    measurementId: "G-VM14R0FWL8"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+  const storage = getStorage(app);
+  const DOC_REF = doc(db, 'site', 'main');
+
+  // ── 전역 노출 ──
+  window._db = db;
+  window._storage = storage;
+  window._DOC_REF = DOC_REF;
+  window._fbReady = true;
+
+  // ── 페이지 로드 시 Firebase에서 데이터 복원 ──
+  async function loadSiteData() {
+    try {
+      const snap = await getDoc(DOC_REF);
+      if (!snap.exists()) return;
+      const d = snap.data();
+
+      if (d.name)     document.querySelectorAll('.profile-name').forEach(e => e.innerText = d.name);
+      if (d.title)    document.querySelectorAll('.profile-title').forEach(e => e.innerText = d.title);
+      if (d.badge)    { const b = document.querySelector('.hero-badge'); if(b) b.innerText = d.badge; }
+      if (d.headline) { const h = document.querySelector('.hero h1'); if(h) h.innerText = d.headline; }
+      if (d.desc)     { const p = document.querySelector('.hero-desc'); if(p) p.innerText = d.desc; }
+      const nums = document.querySelectorAll('.stat-num');
+      if (d.stat1 && nums[0]) nums[0].innerText = d.stat1;
+      if (d.stat2 && nums[1]) nums[1].innerText = d.stat2;
+      if (d.stat3 && nums[2]) nums[2].innerText = d.stat3;
+      if (d.ctaTitle) { const c = document.querySelector('.cta-section h2'); if(c) c.innerText = d.ctaTitle; }
+      if (d.ctaDesc)  { const c = document.querySelector('.cta-section p');  if(c) c.innerText = d.ctaDesc; }
+      if (d.email)    { const btn = document.querySelector('.btn-white'); if(btn) btn.href = 'mailto:' + d.email; }
+      if (d.photoURL) window.applyPhoto(d.photoURL);
+    } catch(e) {
+      console.warn('Firebase 로드 실패:', e);
+    }
+  }
+
+  // ── 저장 ──
+  window.saveAll = async function() {
+    const msg = document.getElementById('adminSaveMsg');
+    msg.textContent = '⏳ 저장 중...';
+
+    const textData = {
+      name:     document.getElementById('adminName').value,
+      title:    document.getElementById('adminTitle').value,
+      badge:    document.getElementById('adminBadge').value,
+      headline: document.getElementById('adminHeadline').value,
+      desc:     document.getElementById('adminDesc').value,
+      stat1:    document.getElementById('adminStat1').value,
+      stat2:    document.getElementById('adminStat2').value,
+      stat3:    document.getElementById('adminStat3').value,
+      ctaTitle: document.getElementById('adminCtaTitle').value,
+      ctaDesc:  document.getElementById('adminCtaDesc').value,
+      email:    document.getElementById('adminEmail').value,
+    };
+
+    try {
+      // 이미지 업로드 처리
+      const previewSrc = document.getElementById('adminPhotoPreview').src || '';
+      if (previewSrc && previewSrc.startsWith('data:')) {
+        // base64 → Firebase Storage 업로드
+        const imgRef = ref(storage, 'profile/main.jpg');
+        await uploadString(imgRef, previewSrc, 'data_url');
+        const downloadURL = await getDownloadURL(imgRef);
+        textData.photoURL = downloadURL;
+      } else if (!previewSrc || previewSrc.length < 10) {
+        textData.photoURL = '';
+      }
+
+      // Firestore에 텍스트+이미지URL 저장
+      await setDoc(DOC_REF, textData);
+
+      msg.textContent = '✅ 저장 완료! 모든 기기에 반영됩니다';
+      setTimeout(() => msg.textContent = '', 3000);
+    } catch(e) {
+      console.error('Firebase 저장 실패:', e);
+      msg.textContent = '❌ 저장 실패. 다시 시도해 주세요';
+      setTimeout(() => msg.textContent = '', 3000);
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', loadSiteData);
+</script>
+
 <script>
   /* ── 프로필 사진 (메인) ── */
   function changeAvatar(event) {
@@ -1432,93 +1532,11 @@
     adminEmpty.style.display = 'flex';
   }
 
-  /* ── 클라우드 저장 (모든 기기 공유) ── */
-  const STORAGE_KEY = 'isheon_site_data';
-
-  async function saveAll() {
-    const msg = document.getElementById('adminSaveMsg');
-    msg.textContent = '⏳ 저장 중...';
-
-    const photoSrc = document.getElementById('adminPhotoPreview').src || '';
-    // 이미지는 별도 키로 저장 (5MB 제한 고려)
-    const textData = {
-      name:     document.getElementById('adminName').value,
-      title:    document.getElementById('adminTitle').value,
-      badge:    document.getElementById('adminBadge').value,
-      headline: document.getElementById('adminHeadline').value,
-      desc:     document.getElementById('adminDesc').value,
-      stat1:    document.getElementById('adminStat1').value,
-      stat2:    document.getElementById('adminStat2').value,
-      stat3:    document.getElementById('adminStat3').value,
-      ctaTitle: document.getElementById('adminCtaTitle').value,
-      ctaDesc:  document.getElementById('adminCtaDesc').value,
-      email:    document.getElementById('adminEmail').value,
-    };
-
-    try {
-      // 텍스트 데이터 저장
-      await window.storage.set(STORAGE_KEY, JSON.stringify(textData), true);
-      // 이미지 별도 저장
-      if (photoSrc && photoSrc.length > 10 && photoSrc.startsWith('data:')) {
-        await window.storage.set(STORAGE_KEY + '_photo', photoSrc, true);
-      } else if (!photoSrc || photoSrc.length < 10) {
-        try { await window.storage.delete(STORAGE_KEY + '_photo', true); } catch(e) {}
-      }
-      msg.textContent = '✅ 저장 완료! 모든 기기에 반영됩니다';
-      setTimeout(() => msg.textContent = '', 3000);
-    } catch(e) {
-      // 클라우드 실패 시 localStorage 폴백
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({...textData, photo: photoSrc}));
-        msg.textContent = '✅ 저장 완료 (로컬)';
-      } catch(e2) {}
-      setTimeout(() => msg.textContent = '', 2500);
-    }
-  }
-
-  /* ── 페이지 로드 시 클라우드에서 복원 ── */
-  async function loadSiteData() {
-    let d = null;
-    let photoSrc = '';
-
-    try {
-      // 클라우드에서 불러오기
-      const result = await window.storage.get(STORAGE_KEY, true);
-      if (result && result.value) d = JSON.parse(result.value);
-
-      const photoResult = await window.storage.get(STORAGE_KEY + '_photo', true);
-      if (photoResult && photoResult.value) photoSrc = photoResult.value;
-    } catch(e) {
-      // 클라우드 실패 시 localStorage 폴백
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) {
-          const parsed = JSON.parse(raw);
-          d = parsed;
-          photoSrc = parsed.photo || '';
-        }
-      } catch(e2) {}
-    }
-
-    if (!d) return;
-
-    if (d.name)     document.querySelectorAll('.profile-name').forEach(e => e.innerText = d.name);
-    if (d.title)    document.querySelectorAll('.profile-title').forEach(e => e.innerText = d.title);
-    if (d.badge)    { const b = document.querySelector('.hero-badge'); if(b) b.innerText = d.badge; }
-    if (d.headline) { const h = document.querySelector('.hero h1'); if(h) h.innerText = d.headline; }
-    if (d.desc)     { const p = document.querySelector('.hero-desc'); if(p) p.innerText = d.desc; }
-    const nums = document.querySelectorAll('.stat-num');
-    if (d.stat1 && nums[0]) nums[0].innerText = d.stat1;
-    if (d.stat2 && nums[1]) nums[1].innerText = d.stat2;
-    if (d.stat3 && nums[2]) nums[2].innerText = d.stat3;
-    if (d.ctaTitle) { const c = document.querySelector('.cta-section h2'); if(c) c.innerText = d.ctaTitle; }
-    if (d.ctaDesc)  { const c = document.querySelector('.cta-section p');  if(c) c.innerText = d.ctaDesc; }
-    if (d.email)    { const btn = document.querySelector('.btn-white'); if(btn) btn.href = 'mailto:' + d.email; }
-    if (photoSrc && photoSrc.length > 10) applyPhoto(photoSrc);
-  }
+  /* ── 저장 / 로드는 Firebase module script에서 처리 ── */
+  // saveAll()은 Firebase module에서 window.saveAll로 등록됨
 
   window.addEventListener('DOMContentLoaded', function() {
-    loadSiteData();
+    // Firebase 모듈이 로드된 후 자동으로 데이터 복원됨
   });
 </script>
 </body>
