@@ -1274,74 +1274,88 @@
   <p style="margin-top:16px;">© 2025 이시헌 강사. All rights reserved.</p>
 </footer>
 
-<!-- Firebase SDK (compat 버전) -->
+
+<!-- Firebase SDK - Firestore만 사용 (Storage 제거로 속도 개선) -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 
 <script>
 // ═══════════════════════════════════════════════════
-//  Firebase 초기화
+//  Firebase 초기화 (Firestore만)
 // ═══════════════════════════════════════════════════
-const firebaseConfig = {
-  apiKey:            "AIzaSyACUZo5c-2E78Tohuk-3rKmiaDGi8QbKXg",
-  authDomain:        "q4414125.firebaseapp.com",
-  projectId:         "q4414125",
-  storageBucket:     "q4414125.firebasestorage.app",
-  messagingSenderId: "287445600393",
-  appId:             "1:287445600393:web:4f9c93b6d8e5e2cd32de58"
-};
-
-var db, fbStorage;
+var db;
 try {
-  firebase.initializeApp(firebaseConfig);
-  db        = firebase.firestore();
-  fbStorage = firebase.storage();
-  console.log('[Firebase] 초기화 성공');
-} catch(initErr) {
-  console.error('[Firebase] 초기화 실패:', initErr.message);
+  firebase.initializeApp({
+    apiKey:            "AIzaSyACUZo5c-2E78Tohuk-3rKmiaDGi8QbKXg",
+    authDomain:        "q4414125.firebaseapp.com",
+    projectId:         "q4414125",
+    appId:             "1:287445600393:web:4f9c93b6d8e5e2cd32de58"
+  });
+  db = firebase.firestore();
+} catch(e) { console.error('FB init:', e.message); }
+
+// ═══════════════════════════════════════════════════
+//  이미지 압축 (Canvas - 최대 600px, 품질 0.7)
+// ═══════════════════════════════════════════════════
+function compressImage(dataURL, maxSize, quality, callback) {
+  var img = new Image();
+  img.onload = function() {
+    var w = img.width, h = img.height;
+    if (w > maxSize || h > maxSize) {
+      if (w > h) { h = Math.round(h * maxSize / w); w = maxSize; }
+      else       { w = Math.round(w * maxSize / h); h = maxSize; }
+    }
+    var canvas = document.createElement('canvas');
+    canvas.width = w; canvas.height = h;
+    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+    callback(canvas.toDataURL('image/jpeg', quality));
+  };
+  img.src = dataURL;
 }
 
 // ═══════════════════════════════════════════════════
-//  연결 상태 뱃지 (어드민 헤더에 표시)
+//  연결 상태 뱃지
 // ═══════════════════════════════════════════════════
-function setFbStatus(state, msg) {
+function setFbStatus(state, text) {
   var badge = document.getElementById('fbStatusBadge');
   if (!badge) return;
-  var colors = { ok: '#03C75A', err: '#d94f4f', loading: '#f59e0b' };
-  badge.style.background = colors[state] || '#aaa';
-  badge.textContent = msg;
+  badge.style.background = {ok:'#03C75A', err:'#d94f4f', loading:'#f59e0b'}[state] || '#aaa';
+  badge.textContent = text;
 }
 
 // ═══════════════════════════════════════════════════
-//  페이지 로드 → Firebase 데이터 복원
+//  페이지 로드 → Firestore 데이터 복원
 // ═══════════════════════════════════════════════════
 async function loadSiteData() {
-  if (!db) return;
+  if (!db) { setFbStatus('err', '● DB 미연결'); return; }
+  setFbStatus('loading', '● 로딩 중...');
   try {
+    // 텍스트
     var snap = await db.collection('site').doc('main').get();
-    if (!snap.exists) { setFbStatus('ok', '● Firebase 연결됨'); return; }
-    var d = snap.data();
-
-    if (d.name)     document.querySelectorAll('.profile-name').forEach(function(el){ el.innerText = d.name; });
-    if (d.title)    document.querySelectorAll('.profile-title').forEach(function(el){ el.innerText = d.title; });
-    if (d.badge)    { var b = document.querySelector('.hero-badge');     if(b) b.innerText = d.badge; }
-    if (d.headline) { var h = document.querySelector('.hero h1');        if(h) h.innerText = d.headline; }
-    if (d.desc)     { var p = document.querySelector('.hero-desc');      if(p) p.innerText = d.desc; }
-    var nums = document.querySelectorAll('.stat-num');
-    if (d.stat1 && nums[0]) nums[0].innerText = d.stat1;
-    if (d.stat2 && nums[1]) nums[1].innerText = d.stat2;
-    if (d.stat3 && nums[2]) nums[2].innerText = d.stat3;
-    if (d.ctaTitle) { var ct = document.querySelector('.cta-section h2'); if(ct) ct.innerText = d.ctaTitle; }
-    if (d.ctaDesc)  { var cd = document.querySelector('.cta-section p');  if(cd) cd.innerText = d.ctaDesc; }
-    if (d.email)    { var btn = document.querySelector('.btn-white');     if(btn) btn.href = 'mailto:' + d.email; }
-    if (d.photoURL && d.photoURL.length > 5) applyPhoto(d.photoURL);
-
+    if (snap.exists) {
+      var d = snap.data();
+      if (d.name)     document.querySelectorAll('.profile-name').forEach(function(el){ el.innerText = d.name; });
+      if (d.title)    document.querySelectorAll('.profile-title').forEach(function(el){ el.innerText = d.title; });
+      if (d.badge)    { var b=document.querySelector('.hero-badge');    if(b) b.innerText=d.badge; }
+      if (d.headline) { var h=document.querySelector('.hero h1');       if(h) h.innerText=d.headline; }
+      if (d.desc)     { var p=document.querySelector('.hero-desc');     if(p) p.innerText=d.desc; }
+      var nums=document.querySelectorAll('.stat-num');
+      if (d.stat1&&nums[0]) nums[0].innerText=d.stat1;
+      if (d.stat2&&nums[1]) nums[1].innerText=d.stat2;
+      if (d.stat3&&nums[2]) nums[2].innerText=d.stat3;
+      if (d.ctaTitle) { var c=document.querySelector('.cta-section h2'); if(c) c.innerText=d.ctaTitle; }
+      if (d.ctaDesc)  { var cd=document.querySelector('.cta-section p'); if(cd) cd.innerText=d.ctaDesc; }
+      if (d.email)    { var eb=document.querySelector('.btn-white');     if(eb) eb.href='mailto:'+d.email; }
+    }
+    // 이미지 (별도 doc - 용량 분리)
+    var imgSnap = await db.collection('site').doc('photo').get();
+    if (imgSnap.exists && imgSnap.data().data) {
+      applyPhoto(imgSnap.data().data);
+    }
     setFbStatus('ok', '● Firebase 연결됨');
-    console.log('[Firebase] 데이터 로드 성공');
   } catch(e) {
-    console.error('[Firebase] 로드 실패:', e.code, e.message);
-    setFbStatus('err', '● 연결 실패: ' + (e.code || e.message));
+    console.error('FB load:', e.code, e.message);
+    setFbStatus('err', '● 오류: ' + (e.code||e.message));
   }
 }
 
@@ -1349,114 +1363,107 @@ async function loadSiteData() {
 //  사진 화면 적용
 // ═══════════════════════════════════════════════════
 function applyPhoto(src) {
-  var img         = document.getElementById('avatarImg');
-  var placeholder = document.getElementById('avatarPlaceholder');
-  var overlay     = document.getElementById('photoOverlay');
-  var adminPrev   = document.getElementById('adminPhotoPreview');
-  var adminEmpty  = document.getElementById('adminPhotoEmpty');
-  if (!img) return;
-  img.src = src; img.style.display = 'block';
-  if (placeholder) placeholder.style.display = 'none';
-  if (overlay)     overlay.style.display = 'flex';
-  if (adminPrev)   { adminPrev.src = src; adminPrev.style.display = 'block'; }
-  if (adminEmpty)  adminEmpty.style.display = 'none';
+  var img=document.getElementById('avatarImg');
+  var ph=document.getElementById('avatarPlaceholder');
+  var ov=document.getElementById('photoOverlay');
+  var ap=document.getElementById('adminPhotoPreview');
+  var ae=document.getElementById('adminPhotoEmpty');
+  if(!img) return;
+  img.src=src; img.style.display='block';
+  if(ph) ph.style.display='none';
+  if(ov) ov.style.display='flex';
+  if(ap) { ap.src=src; ap.style.display='block'; }
+  if(ae) ae.style.display='none';
 }
 
 function changeAvatar(event) {
-  var file = event.target.files[0]; if (!file) return;
-  var reader = new FileReader();
-  reader.onload = function(e) { applyPhoto(e.target.result); };
+  var file=event.target.files[0]; if(!file) return;
+  var reader=new FileReader();
+  reader.onload=function(e){ applyPhoto(e.target.result); };
   reader.readAsDataURL(file);
 }
 
 // ═══════════════════════════════════════════════════
 //  어드민 비번
 // ═══════════════════════════════════════════════════
-var adminUnlocked = false;
-
+var adminUnlocked=false;
 function toggleAdmin() {
   if (!adminUnlocked) { openPasswordModal(); }
   else {
-    var ov = document.getElementById('adminOverlay');
+    var ov=document.getElementById('adminOverlay');
     ov.classList.toggle('open');
     if (ov.classList.contains('open')) syncAdminFields();
   }
 }
 function openPasswordModal() {
-  document.getElementById('pwModal').style.display = 'flex';
-  document.getElementById('pwInput').value = '';
-  document.getElementById('pwError').style.display = 'none';
-  setTimeout(function(){ document.getElementById('pwInput').focus(); }, 80);
+  document.getElementById('pwModal').style.display='flex';
+  document.getElementById('pwInput').value='';
+  document.getElementById('pwError').style.display='none';
+  setTimeout(function(){ document.getElementById('pwInput').focus(); },80);
 }
-function closePwModal() { document.getElementById('pwModal').style.display = 'none'; }
+function closePwModal(){ document.getElementById('pwModal').style.display='none'; }
 function submitPassword() {
-  if (document.getElementById('pwInput').value === '1234') {
-    adminUnlocked = true; closePwModal();
+  if (document.getElementById('pwInput').value==='1234') {
+    adminUnlocked=true; closePwModal();
     document.getElementById('adminOverlay').classList.add('open');
     syncAdminFields();
   } else {
-    document.getElementById('pwError').style.display = 'block';
-    document.getElementById('pwInput').value = '';
+    document.getElementById('pwError').style.display='block';
+    document.getElementById('pwInput').value='';
     document.getElementById('pwInput').focus();
-    setTimeout(function(){ document.getElementById('pwError').style.display = 'none'; }, 2200);
+    setTimeout(function(){ document.getElementById('pwError').style.display='none'; },2200);
   }
 }
 function closeAdminOutside(e) {
-  if (e.target === document.getElementById('adminOverlay')) {
-    document.getElementById('adminOverlay').classList.remove('open');
-    adminUnlocked = false;
-  }
+  if(e.target===document.getElementById('adminOverlay')) { closeAdmin(); }
 }
 function closeAdmin() {
   document.getElementById('adminOverlay').classList.remove('open');
-  adminUnlocked = false;
+  adminUnlocked=false;
 }
 
 // ═══════════════════════════════════════════════════
 //  어드민 필드 동기화
 // ═══════════════════════════════════════════════════
 function syncAdminFields() {
-  function fill(id, el) { var i=document.getElementById(id); if(i&&el) i.value=el.innerText.trim(); }
-  fill('adminName',     document.querySelector('.profile-name'));
-  fill('adminTitle',    document.querySelector('.profile-title'));
-  fill('adminBadge',    document.querySelector('.hero-badge'));
-  fill('adminHeadline', document.querySelector('.hero h1'));
-  fill('adminDesc',     document.querySelector('.hero-desc'));
-  var nums = document.querySelectorAll('.stat-num');
-  fill('adminStat1', nums[0]); fill('adminStat2', nums[1]); fill('adminStat3', nums[2]);
-  fill('adminCtaTitle', document.querySelector('.cta-section h2'));
-  fill('adminCtaDesc',  document.querySelector('.cta-section p'));
-  var eb = document.querySelector('.btn-white');
-  var ei = document.getElementById('adminEmail');
-  if(eb && ei) ei.value = eb.href.replace('mailto:','');
-  var img = document.getElementById('avatarImg');
-  if(img && img.style.display !== 'none' && img.src && img.src.length > 10) {
-    var prev = document.getElementById('adminPhotoPreview');
-    var emp  = document.getElementById('adminPhotoEmpty');
-    if(prev){ prev.src = img.src; prev.style.display = 'block'; }
-    if(emp)  emp.style.display = 'none';
+  function fill(id,el){ var i=document.getElementById(id); if(i&&el) i.value=el.innerText.trim(); }
+  fill('adminName',    document.querySelector('.profile-name'));
+  fill('adminTitle',   document.querySelector('.profile-title'));
+  fill('adminBadge',   document.querySelector('.hero-badge'));
+  fill('adminHeadline',document.querySelector('.hero h1'));
+  fill('adminDesc',    document.querySelector('.hero-desc'));
+  var nums=document.querySelectorAll('.stat-num');
+  fill('adminStat1',nums[0]); fill('adminStat2',nums[1]); fill('adminStat3',nums[2]);
+  fill('adminCtaTitle',document.querySelector('.cta-section h2'));
+  fill('adminCtaDesc', document.querySelector('.cta-section p'));
+  var eb=document.querySelector('.btn-white');
+  var ei=document.getElementById('adminEmail');
+  if(eb&&ei) ei.value=eb.href.replace('mailto:','');
+  var img=document.getElementById('avatarImg');
+  if(img&&img.style.display!=='none'&&img.src&&img.src.length>10){
+    var prev=document.getElementById('adminPhotoPreview');
+    var emp=document.getElementById('adminPhotoEmpty');
+    if(prev){ prev.src=img.src; prev.style.display='block'; }
+    if(emp)  emp.style.display='none';
   }
 }
 
 // ═══════════════════════════════════════════════════
 //  라이브 미리보기
 // ═══════════════════════════════════════════════════
-function liveUpdate(id, cls) {
-  var v=document.getElementById(id).value;
-  document.querySelectorAll('.'+cls).forEach(function(el){ el.innerText=v; });
-}
-function liveUpdateSingle(id, sel) { var el=document.querySelector(sel); if(el) el.innerText=document.getElementById(id).value; }
-function liveUpdateHTML(id, sel)   { liveUpdateSingle(id, sel); }
-function liveUpdateNth(id, sel, n) { var els=document.querySelectorAll(sel); if(els[n]) els[n].innerText=document.getElementById(id).value; }
-function updateEmail() { var btn=document.querySelector('.btn-white'); if(btn) btn.href='mailto:'+document.getElementById('adminEmail').value; }
+function liveUpdate(id,cls){ var v=document.getElementById(id).value; document.querySelectorAll('.'+cls).forEach(function(el){ el.innerText=v; }); }
+function liveUpdateSingle(id,sel){ var el=document.querySelector(sel); if(el) el.innerText=document.getElementById(id).value; }
+function liveUpdateHTML(id,sel){ liveUpdateSingle(id,sel); }
+function liveUpdateNth(id,sel,n){ var els=document.querySelectorAll(sel); if(els[n]) els[n].innerText=document.getElementById(id).value; }
+function updateEmail(){ var btn=document.querySelector('.btn-white'); if(btn) btn.href='mailto:'+document.getElementById('adminEmail').value; }
 
 // ═══════════════════════════════════════════════════
 //  어드민 사진 업로드 / 삭제
 // ═══════════════════════════════════════════════════
 function adminUploadPhoto(event) {
-  var file = event.target.files[0]; if (!file) return;
-  var reader = new FileReader();
-  reader.onload = function(e) { applyPhoto(e.target.result); };
+  var file=event.target.files[0]; if(!file) return;
+  var reader=new FileReader();
+  reader.onload=function(e){ applyPhoto(e.target.result); };
   reader.readAsDataURL(file);
 }
 function adminRemovePhoto() {
@@ -1466,28 +1473,22 @@ function adminRemovePhoto() {
   var pr=document.getElementById('adminPhotoPreview');
   var em=document.getElementById('adminPhotoEmpty');
   if(img){ img.src=''; img.style.display='none'; }
-  if(ph)  ph.style.display='flex';
-  if(ov)  ov.style.display='none';
+  if(ph) ph.style.display='flex';
+  if(ov) ov.style.display='none';
   if(pr){ pr.src=''; pr.style.display='none'; }
-  if(em)  em.style.display='flex';
+  if(em) em.style.display='flex';
 }
 
 // ═══════════════════════════════════════════════════
-//  Firebase 저장
+//  저장 (텍스트 + 이미지 분리 저장으로 속도 향상)
 // ═══════════════════════════════════════════════════
 async function saveAll() {
-  var msg = document.getElementById('adminSaveMsg');
+  var msg=document.getElementById('adminSaveMsg');
+  if (!db) { msg.style.color='#d94f4f'; msg.textContent='❌ Firebase 미연결'; return; }
 
-  if (!db) {
-    msg.style.color = '#d94f4f';
-    msg.textContent = '❌ Firebase 미연결 - 아래 규칙 설정 확인';
-    return;
-  }
+  msg.style.color='#f59e0b'; msg.textContent='⏳ 저장 중...';
 
-  msg.style.color = '#f59e0b';
-  msg.textContent = '⏳ 저장 중...';
-
-  var data = {
+  var textData = {
     name:     document.getElementById('adminName').value,
     title:    document.getElementById('adminTitle').value,
     badge:    document.getElementById('adminBadge').value,
@@ -1499,92 +1500,54 @@ async function saveAll() {
     ctaTitle: document.getElementById('adminCtaTitle').value,
     ctaDesc:  document.getElementById('adminCtaDesc').value,
     email:    document.getElementById('adminEmail').value,
-    photoURL: '',
     updatedAt: new Date().toISOString()
   };
 
   try {
-    // 이미지 처리
-    var prevSrc = document.getElementById('adminPhotoPreview').src || '';
+    // 1) 텍스트 먼저 저장 (빠름)
+    await db.collection('site').doc('main').set(textData);
+
+    // 2) 이미지: base64면 압축 후 별도 doc에 저장
+    var prevSrc=document.getElementById('adminPhotoPreview').src||'';
     if (prevSrc && prevSrc.startsWith('data:')) {
-      msg.textContent = '⏳ 이미지 업로드 중...';
-      var imgRef = fbStorage.ref('profile/main.jpg');
-      await imgRef.putString(prevSrc, 'data_url');
-      data.photoURL = await imgRef.getDownloadURL();
-      console.log('[Firebase] 이미지 업로드 완료');
-    } else if (prevSrc && prevSrc.startsWith('http')) {
-      data.photoURL = prevSrc;
-    }
-
-    // Firestore 저장
-    await db.collection('site').doc('main').set(data);
-    console.log('[Firebase] 저장 완료:', data.updatedAt);
-
-    msg.style.color = '#03C75A';
-    msg.textContent = '✅ 저장 완료! 모든 기기 반영';
-    setFbStatus('ok', '● Firebase 연결됨');
-    setTimeout(function(){ msg.textContent = ''; }, 3500);
-
-  } catch(e) {
-    console.error('[Firebase] 저장 실패 코드:', e.code, '메시지:', e.message);
-
-    msg.style.color = '#d94f4f';
-    if (e.code === 'permission-denied') {
-      msg.textContent = '❌ 권한 오류 - Firebase 규칙 설정 필요';
-      showRulesGuide();
-    } else if (e.code === 'unavailable') {
-      msg.textContent = '❌ 네트워크 오류 - 인터넷 확인';
+      msg.textContent='⏳ 이미지 압축 중...';
+      compressImage(prevSrc, 800, 0.75, async function(compressed) {
+        try {
+          await db.collection('site').doc('photo').set({ data: compressed, updatedAt: new Date().toISOString() });
+          msg.style.color='#03C75A'; msg.textContent='✅ 저장 완료! 모든 기기에 반영';
+          setFbStatus('ok','● Firebase 연결됨');
+          setTimeout(function(){ msg.textContent=''; msg.style.color=''; },3500);
+        } catch(imgErr) {
+          msg.style.color='#f59e0b';
+          msg.textContent='⚠️ 텍스트 저장됨 / 이미지 실패: '+imgErr.code;
+          setTimeout(function(){ msg.textContent=''; msg.style.color=''; },4000);
+        }
+      });
     } else {
-      msg.textContent = '❌ 오류: ' + (e.code || e.message);
+      msg.style.color='#03C75A'; msg.textContent='✅ 저장 완료! 모든 기기에 반영';
+      setFbStatus('ok','● Firebase 연결됨');
+      setTimeout(function(){ msg.textContent=''; msg.style.color=''; },3500);
     }
-    setTimeout(function(){ msg.textContent = ''; msg.style.color = ''; }, 6000);
+  } catch(e) {
+    console.error('FB save:', e.code, e.message);
+    msg.style.color='#d94f4f';
+    if (e.code==='permission-denied') {
+      msg.textContent='❌ 권한 오류 → Firebase 규칙 설정 필요';
+      setFbStatus('err','● 권한 오류');
+    } else {
+      msg.textContent='❌ 저장 실패: '+(e.code||e.message);
+      setFbStatus('err','● 저장 실패');
+    }
+    setTimeout(function(){ msg.textContent=''; msg.style.color=''; },5000);
   }
-}
-
-// ═══════════════════════════════════════════════════
-//  Firebase 규칙 안내 팝업
-// ═══════════════════════════════════════════════════
-function showRulesGuide() {
-  var existing = document.getElementById('rulesGuideModal');
-  if (existing) { existing.style.display = 'flex'; return; }
-
-  var modal = document.createElement('div');
-  modal.id = 'rulesGuideModal';
-  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
-  modal.innerHTML = [
-    '<div style="background:#fff;border-radius:16px;padding:32px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;">',
-    '<h3 style="font-size:18px;font-weight:900;color:#1E2D40;margin-bottom:8px;">🔧 Firebase 규칙 설정 필요</h3>',
-    '<p style="font-size:13px;color:#6b7684;margin-bottom:20px;">저장이 막혀 있습니다. 아래 순서대로 설정하세요.</p>',
-
-    '<div style="background:#f5f6f8;border-radius:10px;padding:16px;margin-bottom:16px;">',
-    '<p style="font-size:12px;font-weight:700;color:#1E2D40;margin-bottom:8px;">① Firestore Database → 규칙 탭</p>',
-    '<pre style="background:#1E2D40;color:#03C75A;padding:12px;border-radius:8px;font-size:11px;overflow-x:auto;white-space:pre-wrap;">',
-    "rules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /site/main {\n      allow read, write: if true;\n    }\n  }\n}",
-    '</pre></div>',
-
-    '<div style="background:#f5f6f8;border-radius:10px;padding:16px;margin-bottom:20px;">',
-    '<p style="font-size:12px;font-weight:700;color:#1E2D40;margin-bottom:8px;">② Storage → 규칙 탭</p>',
-    '<pre style="background:#1E2D40;color:#03C75A;padding:12px;border-radius:8px;font-size:11px;overflow-x:auto;white-space:pre-wrap;">',
-    "rules_version = '2';\nservice firebase.storage {\n  match /b/{bucket}/o {\n    match /{allPaths=**} {\n      allow read, write: if true;\n    }\n  }\n}",
-    '</pre></div>',
-
-    '<p style="font-size:12px;color:#6b7684;margin-bottom:16px;">설정 후 <strong>게시</strong> 버튼 클릭 → 다시 저장 시도</p>',
-    '<button onclick="document.getElementById(\'rulesGuideModal\').style.display=\'none\'" ',
-    'style="width:100%;padding:12px;background:#03C75A;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">확인</button>',
-    '</div>'
-  ].join('');
-  document.body.appendChild(modal);
-  modal.addEventListener('click', function(e){ if(e.target===modal) modal.style.display='none'; });
 }
 
 // ═══════════════════════════════════════════════════
 //  시작
 // ═══════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', function() {
-  setFbStatus('loading', '● 연결 중...');
-  loadSiteData();
-});
+document.addEventListener('DOMContentLoaded', function(){ loadSiteData(); });
 </script>
+
 
 </body>
 </html>
